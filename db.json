@@ -1,104 +1,148 @@
 {
-    "users": [
-        {
-            "id": "u1",
-            "name": "أحمد محمود",
-            "phone": "01012345678",
-            "role": "patient",
-            "dob": "1995-05-12",
-            "createdAt": "2026-01-10T10:00:00Z"
-        },
-        {
-            "id": "u2",
-            "name": "د. محمد علي",
-            "phone": "01100000000",
-            "role": "doctor",
-            "createdAt": "2025-01-01T10:00:00Z"
-        },
-        {
-            "id": "u3",
-            "name": "مريم حسن (السكرتيرة)",
-            "phone": "01200000000",
-            "role": "receptionist",
-            "createdAt": "2025-02-01T10:00:00Z"
-        }
-    ],
-    "doctorSettings": {
-        "doctorId": "u2",
-        "specialty": "استشاري الباطنة والجهاز الهضمي",
-        "consultationFee": 300,
-        "noShowPenalty": 50,
-        "maxDailyPatients": 30,
-        "avgConsultationMinutes": 15,
-        "gracePeriodMinutes": 10,
-        "isBookingOpen": true,
-        "currentLocation": "عيادة مدينة نصر",
-        "workSchedule": [
-            {
-                "day": "Sunday",
-                "location": "عيادة مدينة نصر",
-                "startTime": "16:00",
-                "endTime": "21:00"
-            },
-            {
-                "day": "Tuesday",
-                "location": "عيادة التجمع",
-                "startTime": "17:00",
-                "endTime": "22:00"
-            }
-        ]
+  "users": [
+    {
+      "id": "u1",
+      "name": "أحمد محمود",
+      "phone": "01012345678",
+      "role": "patient",
+      "dob": "1995-05-12",
+      "createdAt": "2026-01-10T10:00:00Z"
     },
-    "medicalRecords": [
-        {
-            "id": "mr1",
-            "patientId": "u1",
-            "allergies": [
-                "البنسلين"
-            ],
-            "chronicDiseases": [
-                "ضغط الدم المرتفع"
-            ],
-            "notes": "يحتاج متابعة دورية لقياس الضغط"
-        }
-    ],
-    "appointments": [
-        {
-            "id": "app101",
-            "patientId": "u1",
-            "patientName": "أحمد محمود",
-            "patientPhone": "01012345678",
-            "date": "2026-07-24",
-            "queueNumber": 1,
-            "status": "in-consultation",
-            "bookingType": "online",
-            "amountPaid": 300,
-            "createdAt": "2026-07-24T09:00:00Z"
-        },
-        {
-            "id": "app102",
-            "patientId": null,
-            "patientName": "عمر خالد (بدون حجز)",
-            "patientPhone": "01500000000",
-            "date": "2026-07-24",
-            "queueNumber": 2,
-            "status": "waiting",
-            "bookingType": "walk-in",
-            "amountPaid": 300,
-            "createdAt": "2026-07-24T10:30:00Z"
-        }
-    ],
-    "consultations": [
-        {
-            "id": "c1",
-            "appointmentId": "app100",
-            "patientId": "u1",
-            "doctorId": "u2",
-            "date": "2026-07-10",
-            "diagnosis": "نزلة معوية حادة",
-            "notes": "الالتزام بالراحة والوجبات الخفيفة",
-            "prescription": "1. نوديبـان - قرص بعد الأكل\n2. محلول جفاف - كيس بعد كل حمام",
-            "dietPlan": "المواظبة على الأرز المسلوق والبطاطس المسلوقة وتجنب الدهون.",
-            "labRequests": "تحليل صور دم كاملة (CBC)"
-        }
+    {
+      "id": "u2",
+      "name": "د. محمد علي",
+      "phone": "01100000000",
+      "role": "doctor",
+      "createdAt": "2025-01-01T10:00:00Z"
+    },
+    {
+      "id": "u3",
+      "name": "مريم حسن (السكرتيرة)",
+      "phone": "01200000000",
+      "role": "receptionist",
+      "createdAt": "2025-02-01T10:00:00Z"
+    }
+  ],
+  "doctorSettings": {
+    "doctorId": "u2",
+    "specialty": "استشاري الباطنة والجهاز الهضمي",
+    "consultationFee": 300,
+    "noShowPenalty": 50,
+    "maxDailyPatients": 30,
+    "avgConsultationMinutes": 15,
+    "gracePeriodMinutes": 10,
+    "isBookingOpen": true,
+    "currentLocation": "عيادة مدينة نصر",
+    "workSchedule": [
+      {
+        "day": "Sunday",
+        "location": "عيادة مدينة نصر",
+        "startTime": "16:00",
+        "endTime": "21:00"
+      },
+      {
+        "day": "Tuesday",
+        "location": "عيادة التجمع",
+        "startTime": "17:00",
+        "endTime": "22:00"
+      }
     ]
+  },
+  "medicalRecords": [
+    {
+      "id": "mr1",
+      "patientId": "u1",
+      "allergies": ["البنسلين"],
+      "chronicDiseases": ["ضغط الدم المرتفع"],
+      "notes": "يحتاج متابعة دورية لقياس الضغط"
+    }
+  ],
+  "appointments": [
+    {
+      "id": "app101",
+      "patientId": "u1",
+      "patientName": "أحمد محمود",
+      "patientPhone": "01012345678",
+      "date": "2026-07-24",
+      "queueNumber": 1,
+      "status": "in-consultation",
+      "bookingType": "online",
+      "amountPaid": 300,
+      "createdAt": "2026-07-24 09:00"
+    },
+    {
+      "id": "app102",
+      "patientId": null,
+      "patientName": "عمر خالد",
+      "patientPhone": "01064063640",
+      "date": "2026-07-24",
+      "queueNumber": 2,
+      "status": "waiting",
+      "bookingType": "walk-in",
+      "amountPaid": 300,
+      "createdAt": "2026-07-24 10:30"
+    },
+    {
+      "id": "app103",
+      "patientId": "u4",
+      "patientName": "سارة أحمد",
+      "patientPhone": "01098765432",
+      "date": "2026-07-24",
+      "queueNumber": 3,
+      "status": "completed",
+      "bookingType": "online",
+      "amountPaid": 300,
+      "createdAt": "2026-07-24 11:00"
+    },
+    {
+      "id": "app104",
+      "patientId": "u5",
+      "patientName": "محمد خالد",
+      "patientPhone": "01123456789",
+      "date": "2026-07-24",
+      "queueNumber": 4,
+      "status": "waiting",
+      "bookingType": "walk-in",
+      "amountPaid": 300,
+      "createdAt": "2026-07-24 11:30"
+    },
+    {
+      "id": "app105",
+      "patientId": "u6",
+      "patientName": "نور علي",
+      "patientPhone": "01234567890",
+      "date": "2026-07-24",
+      "queueNumber": 5,
+      "status": "cancelled",
+      "bookingType": "online",
+      "amountPaid": 0,
+      "createdAt": "2026-07-24 12:00"
+    },
+    {
+      "id": "app106",
+      "patientId": "u7",
+      "patientName": "ياسمين حسن",
+      "patientPhone": "01555555555",
+      "date": "2026-07-24",
+      "queueNumber": 6,
+      "status": "in-consultation",
+      "bookingType": "online",
+      "amountPaid": 300,
+      "createdAt": "2026-07-24 12:30"
+    }
+  ],
+  "consultations": [
+    {
+      "id": "c1",
+      "appointmentId": "app100",
+      "patientId": "u1",
+      "doctorId": "u2",
+      "date": "2026-07-10",
+      "diagnosis": "نزلة معوية حادة",
+      "notes": "الالتزام بالراحة والوجبات الخفيفة",
+      "prescription": "1. نوديبـان - قرص بعد الأكل\n2. محلول جفاف - كيس بعد كل حمام",
+      "dietPlan": "المواظبة على الأرز المسلوق والبطاطس المسلوقة وتجنب الدهون.",
+      "labRequests": "تحليل صور دم كاملة (CBC)"
+    }
+  ]
 }
