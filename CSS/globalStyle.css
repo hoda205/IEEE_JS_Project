@@ -1,0 +1,20 @@
+:root{
+    --main-bg-color: #fff;
+    --second-bg-color: #f8f7fb;
+    --dark-navy:#014479;
+    --vivid-blue:#1378CA;
+    --pastel-blue:#BAE0FF;
+    --off-white:#EAF2FA;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+body{
+    direction: rtl;
+    font-family: "Cairo", sans-serif;
+    background-color: var(--main-bg-color);
+}
+ul{
+    list-style: none;
+}
