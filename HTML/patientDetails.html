@@ -11,15 +11,18 @@
 <body>
 
     <header class="">
-        <a href="google.com" class="back-link"><i class="fa-solid fa-chevron-right"></i></a>
+        <a href="./home.html" class="back-link"><i class="fa-solid fa-chevron-right"></i></a>
         <h1 class=" font-bold text-2xl">تفاصيل المريض</h1>
     </header>
 
-    <main class="patient-details">
-        
-        <!-- معلومات اضافية -->
-        
+    <main>
+        <div id="patientDetails"></div>
+        <div class="buttons-container w-full md:w-1/2">
+            <button id="startBtn" class="btn text-white bg-green-600 hover:bg-green-700">بدء الكشف</button>
+            <button id="endBtn" class="btn hidden border border-red-600 text-red-600 hover:bg-red-600 hover:text-white">انهاء الكشف</button>
+        </div>
     </main>
+    <script type="module" src="../JS/Done/getPatientDetails.js"></script>
     <script src="../JS/initialSetup.js"></script>
     <script src="../JS/patientDetails.js"></script>
 </body>

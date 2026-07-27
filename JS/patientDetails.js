@@ -1,24 +1,28 @@
-const main = document.querySelector("main");
-console.log(main);
+const main = document.querySelector("#patientDetails");
+let inThequeue = true;
+let withDoctor = false 
+let startBtn = document.querySelector("#startBtn");
+let endBtn = document.querySelector("#endBtn");
+// console.log(btns);
 
 // بيانات المريض
 let user = {
-    // "id": 1,
-    // "img": "profileImg.avif",
-    // "name": "ساره محمود",
-    // // "gender": "انثي",
-    // "mobile": "0123456789",
-    // // "dob": "9-9-2007",
-    // "blodType": "A+",
-    // "maritalStatus": "متزوج",
-    // "address": "عرب الرمل",
-    // "allergies": ["انجوم", "طماطم", "ملوخية"],
-    // "chronicDiseases": ["السكر", "الضغط"],
+    "id": 1,
+    "img": "profileImg.avif",
+    "name": "ساره محمود",
+    "gender": "انثي",
+    "mobile": "0123456789",
+    "dob": "9-9-2007",
+    "blodType": "A+",
+    "maritalStatus": "متزوج",
+    "address": "عرب الرمل",
+    "allergies": ["انجوم", "طماطم", "ملوخية"],
+    "chronicDiseases": ["السكر", "الضغط"],
     
 }
 
 // البيانات الاساسية
-main.innerHTML += 
+main.insertAdjacentHTML( "beforeend" ,
 `<!-- بيانات اساسية -->
 <section class="section main-info">
 <img class="patient-pic" src="../assets/patient-assets/${user.img || "defult.jpg"}" alt="profile picture">
@@ -30,10 +34,10 @@ main.innerHTML +=
                 <h3 class="font-bold">رقم الهاتف</h3>
                 <p>${user.mobile || "___"}</p>
             </div>
-</section>`;
+</section>`);
 
 // البيانات الشخصية
-main.innerHTML += `
+main.insertAdjacentHTML( "beforeend" , `
 <!-- البيانات الشخصية -->
         <section class="section personal-info">
             <h2 class="text-lg font-bold">البيانات الشخصية</h2>
@@ -55,11 +59,11 @@ main.innerHTML += `
                     <p>${user.address || "___"}</p>
                 </div>
             </div>
-        </section>`
+        </section>`)
 
 
 // معلومات اضافية
-main.innerHTML += `
+main.insertAdjacentHTML( "beforeend" ,`
 <section class="section additional-info">
     <h2 class="text-lg font-bold">معلومات اضافية</h2>
     <div>
@@ -75,7 +79,7 @@ main.innerHTML += `
             }
         </div>
     </div>
-</section>`
+</section>`)
 
 
 
@@ -91,3 +95,16 @@ function calculateAge(birthDate){
     return age;
 }
 calculateAge("11-11-2005");
+
+
+
+startBtn.addEventListener("click", () =>{
+    console.log("الكشف بدا");
+    startBtn.style.display = "none";
+    endBtn.style.display = "block";
+    
+})
+endBtn.addEventListener("click", () =>{
+    console.log("الكشف خلص");
+    endBtn.style.display = "none";
+})
