@@ -24,5 +24,6 @@ export default async function checkPatientAppointment(patientUserId) {
     alert("لديك حجز قائم بالفعل، لا يمكنك الحجز مرة أخرى حاليا");
     window.location.href =
       `queue-tracking.html?appointmentId=${activeAppointment.id}`;
+    return;
   }
 }
