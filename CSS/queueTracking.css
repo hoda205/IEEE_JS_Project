@@ -1,0 +1,430 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f5f7fb;
+    font-family: Cairo, sans-serif;
+}
+
+main {
+    padding: 1rem;
+}
+
+/* ======================= */
+
+.queue-status {
+
+    max-width: 900px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 1rem;
+}
+
+/* ======================= */
+
+.queue-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+}
+
+/* ======================= */
+/* ترتيب الكروت */
+
+.queue-main {
+    grid-column: 1;
+}
+
+
+/* المرضى + الوقت */
+.stats-column {
+
+    grid-column: 2;
+
+    display: grid;
+    gap: 1rem;
+}
+
+
+/* حالة الحجز والزر */
+.status-card,
+.cancel-booking-btn {
+
+    grid-column: 1 / -1;
+
+}
+
+
+/* ======================= */
+
+.queue-card__title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.queue-card__subtitle {
+    margin-top: .5rem;
+    color: #888;
+    font-size: .95rem;
+    font-weight: 500;
+}
+
+/* ======================= */
+
+.queue-number {
+    font-size: clamp(3rem, 8vw, 4.5rem);
+    font-weight: 700;
+    color: var(--vivid-blue);
+}
+
+.current-queue-number {
+    font-size: clamp(1.6rem, 5vw, 2rem);
+    font-weight: bold;
+}
+
+/* ======================= */
+
+.stats-number {
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: bold;
+    color: var(--vivid-blue);
+}
+
+.unit-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #555;
+}
+
+/* ======================= */
+
+.status-card {
+
+    align-items: stretch;
+    position: relative;
+
+}
+
+.status-header {
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+}
+
+.booking-status-icon {
+
+    font-size: 1.8rem;
+    color: var(--vivid-blue);
+
+    position: absolute;
+    top: 20px;
+    left: 20px;
+
+}
+
+.booking-status {
+
+    margin-top: 1rem;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    font-weight: bold;
+    color: var(--vivid-blue);
+
+}
+
+/* ======================= */
+
+.cancel-booking-btn {
+
+    width: 100%;
+
+    border-radius: 14px;
+    padding: 1rem;
+
+    color: #DC2626;
+    background: transparent;
+
+    border: 1px solid #DC2626;
+
+    font-size: 1rem;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: .3s;
+
+}
+
+.cancel-booking-btn:hover {
+
+    background: #DC2626;
+    color: white;
+
+}
+
+
+/* ======================= */
+/* Tablet */
+
+@media (max-width:768px) {
+
+
+    .queue-status {
+
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+
+    /* رقم الدور فوق */
+    .queue-main {
+
+        grid-column: 1 / -1;
+
+    }
+
+
+    /* المرضى والوقت جنب بعض */
+    .stats-column {
+
+        grid-column: 1 / -1;
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+
+    .status-card,
+    .cancel-booking-btn {
+
+        grid-column: 1 / -1;
+
+    }
+
+
+    .queue-card {
+
+        padding: 1.25rem;
+
+    }
+
+}
+
+
+/* ======================= */
+/* Mobile */
+
+@media (max-width:576px) {
+
+
+    main {
+
+        padding: .8rem;
+
+    }
+
+
+    .queue-status {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .queue-main {
+
+        grid-column: 1;
+
+    }
+
+
+    /* المرضى والوقت يفضلوا جنب بعض */
+    .stats-column {
+
+        grid-column: 1;
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+
+    .status-card,
+    .cancel-booking-btn {
+
+        grid-column: 1;
+
+    }
+
+
+    .queue-card {
+
+        padding: 1rem;
+        border-radius: 14px;
+
+    }
+
+
+    .booking-status-icon {
+
+        font-size: 1.5rem;
+
+    }
+
+
+    .cancel-booking-btn {
+
+        padding: .9rem;
+
+    }
+
+}
+/* ================= Modal ================= */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 1000;
+}
+
+
+.modal-overlay.active {
+    display: flex;
+}
+
+
+.confirm-modal {
+
+    width: min(90%, 400px);
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 2rem;
+
+    text-align: center;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.15);
+
+    animation: modalShow .3s ease;
+}
+
+
+@keyframes modalShow {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+.modal-icon {
+
+    width: 60px;
+    height: 60px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #fee2e2;
+
+    color: #dc2626;
+
+    font-size: 1.8rem;
+
+}
+
+
+.confirm-modal h3 {
+
+    margin-top: 1rem;
+
+    font-size: 1.4rem;
+
+}
+
+
+.confirm-modal p {
+
+    margin: 1rem 0;
+
+    color: #666;
+
+}
+
+
+.modal-actions {
+
+    display: flex;
+
+    gap: 1rem;
+
+}
+
+
+.modal-actions button {
+
+    flex: 1;
+
+    padding: .8rem;
+
+    border-radius: 12px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    border: none;
+
+}
+
+
+.confirm-cancel-btn {
+
+    background: #dc2626;
+
+    color: white;
+
+}
+
+
+.close-modal-btn {
+
+    background: #f1f5f9;
+
+    color: #333;
+
+}

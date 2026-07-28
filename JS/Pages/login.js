@@ -1,7 +1,7 @@
 import isUser from "../isUser.js";
 
 isUser();
-loginUser("01100000000", "doc_pass_456");
+loginUser("01012345678", "hashed_pass_123");
 async function loginUser(phoneNumber, password) {
   try {
     const response = await fetch("http://localhost:3000/users");

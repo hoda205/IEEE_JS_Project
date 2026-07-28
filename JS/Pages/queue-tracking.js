@@ -1,6 +1,6 @@
   import { checkAuth } from "../checkAuth.js";
 
- const patient = checkAuth();
+const patient = checkAuth();
 
 if (patient) {
   loadQueue();
@@ -8,104 +8,148 @@ if (patient) {
   window.location.replace("login.html");
 }
 
-  // تحميل بيانات الطابور
-  async function loadQueue() {
-    const queue = await getQueueTracking(patient.id);
+// تحميل بيانات الطابور
+async function loadQueue() {
+  const queue = await getQueueTracking(patient.id);
 
-    if (!queue) return;
+  if (!queue) return;
 
-    console.log(queue);
+  console.log(queue);
 
-    // مثال لعرض البيانات
-    // document.getElementById("myQueue").textContent = queue.myQueueNumber;
-    // document.getElementById("currentQueue").textContent = queue.currentQueueNumber;
-    // document.getElementById("patientsAhead").textContent = queue.patientsAhead;
-    // document.getElementById("estimatedTime").textContent = queue.estimatedMinutes;
+  document.getElementById("myQueueNumber").textContent = queue.myQueueNumber;
+
+  document.getElementById("currentQueueNumber").textContent =
+    queue.currentQueueNumber;
+
+  document.getElementById("patientsAhead").textContent = queue.patientsAhead;
+
+  document.getElementById("estimatedMinutes").textContent =
+    queue.estimatedMinutes;
+
+  document.getElementById("bookingStatus").textContent = getStatusText(
+    queue.status,
+  );
+
+  const statusIcon = document.querySelector(".booking-status-icon");
+
+  switch (queue.status) {
+    case "waiting":
+      statusIcon.className = "booking-status-icon fa-regular fa-clock";
+      break;
+
+    case "called":
+      statusIcon.className = "booking-status-icon fa-solid fa-bell";
+      break;
+
+    case "in_consultation":
+      statusIcon.className = "booking-status-icon fa-solid fa-user-doctor";
+      break;
+
+    case "completed":
+      statusIcon.className = "booking-status-icon fa-solid fa-circle-check";
+      break;
+
+    case "cancelled":
+      statusIcon.className = "text-danger booking-status-icon fa-solid fa-circle-xmark";
+      break;
   }
 
-  // متابعة الطابور
-  async function getQueueTracking(patientUserId) {
-    try {
-      const today = new Date().toISOString().split("T")[0];
+  const cancelBtn = document.getElementById("cancelBtn");
 
-      // قراءة id الحجز من الرابط
-      const params = new URLSearchParams(window.location.search);
-      const appointmentId = params.get("appointmentId");
+  const cancelModal = document.getElementById("cancelModal");
 
-      if (!appointmentId) {
-        window.location.href = "home.html";
-        return null;
-      }
+  const confirmCancel = document.getElementById("confirmCancel");
 
-      // جلب جميع الحجوزات
-      const response = await fetch("http://localhost:3000/appointments");
-      const appointments = await response.json();
+  const closeModal = document.getElementById("closeModal");
 
-      // البحث عن الحجز
-      const myApp = appointments.find(
-        (app) => app.id === appointmentId
-      );
+  // فتح الـ Modal
+  cancelBtn.addEventListener("click", () => {
+    cancelModal.classList.add("active");
+  });
 
-      if (!myApp) {
-        window.location.href = "home.html";
-        return null;
-      }
+  // إغلاق بدون إلغاء
+  closeModal.addEventListener("click", () => {
+    cancelModal.classList.remove("active");
+  });
 
-      // التأكد أن الحجز يخص المستخدم الحالي
-      if (myApp.patientId !== patientUserId) {
-        alert("لا يمكنك الوصول إلى هذا الحجز");
-        window.location.href = "home.html";
-        return null;
-      }
+  // تأكيد الإلغاء
+  confirmCancel.addEventListener("click", () => {
+    cancelAppointment();
+  });
+}
 
-      // حجوزات اليوم لنفس الدكتور
-      const todayAppointments = appointments
-        .filter(
-          (app) =>
-            app.doctorId === myApp.doctorId &&
-            app.booking_date === today &&
-            app.status !== "cancelled"
-        )
-        .sort((a, b) => a.queue_number - b.queue_number);
+// متابعة الطابور
+async function getQueueTracking(patientUserId) {
+  try {
+    const today = new Date().toISOString().split("T")[0];
 
-      // المريض الحالي داخل الكشف أو تم نداؤه
-      const currentPatient =
-        todayAppointments.find(
-          (app) => app.status === "in_consultation"
-        ) ||
-        todayAppointments.find(
-          (app) => app.status === "called"
-        );
+    // قراءة id الحجز من الرابط
+    const params = new URLSearchParams(window.location.search);
+    const appointmentId = params.get("appointmentId");
 
-      // عدد المرضى قبله
-      const patientsAhead = todayAppointments.filter(
-        (app) =>
-          app.queue_number < myApp.queue_number &&
-          (app.status === "waiting" ||
-            app.status === "called")
-      ).length;
-
-      return {
-        myQueueNumber: myApp.queue_number,
-        currentQueueNumber: currentPatient
-          ? currentPatient.queue_number
-          : 0,
-        patientsAhead,
-        estimatedMinutes: patientsAhead * 15,
-        status: myApp.status,
-        appointmentId: myApp.id,
-      };
-
-    } catch (error) {
-      console.error("خطأ في متابعة الطابور:", error);
+    if (!appointmentId) {
+      window.location.href = "home.html";
       return null;
     }
-  }
 
-  // إلغاء الحجز
+    // جلب جميع الحجوزات
+    const response = await fetch("http://localhost:3000/appointments");
+    const appointments = await response.json();
+
+    // البحث عن الحجز
+    const myApp = appointments.find((app) => app.id === appointmentId);
+
+    if (!myApp) {
+      window.location.href = "home.html";
+      return null;
+    }
+
+    // التأكد أن الحجز يخص المستخدم الحالي
+    if (myApp.patientId !== patientUserId) {
+      alert("لا يمكنك الوصول إلى هذا الحجز");
+      window.location.href = "home.html";
+      return null;
+    }
+
+    // حجوزات اليوم لنفس الدكتور
+    const todayAppointments = appointments
+      .filter(
+        (app) =>
+          app.doctorId === myApp.doctorId &&
+          app.booking_date === today &&
+          app.status !== "cancelled",
+      )
+      .sort((a, b) => a.queue_number - b.queue_number);
+
+    // المريض الحالي داخل الكشف أو تم نداؤه
+    const currentPatient =
+      todayAppointments.find((app) => app.status === "in_consultation") ||
+      todayAppointments.find((app) => app.status === "called");
+
+    // عدد المرضى قبله
+    const patientsAhead = todayAppointments.filter(
+      (app) =>
+        app.queue_number < myApp.queue_number &&
+        (app.status === "waiting" || app.status === "called"),
+    ).length;
+
+    return {
+      myQueueNumber: myApp.queue_number,
+      currentQueueNumber: currentPatient ? currentPatient.queue_number : 0,
+      patientsAhead,
+      estimatedMinutes: patientsAhead * 15,
+      status: myApp.status,
+      appointmentId: myApp.id,
+    };
+  } catch (error) {
+    console.error("خطأ في متابعة الطابور:", error);
+    return null;
+  }
+}
+
+// إلغاء الحجز
 async function cancelAppointment() {
   try {
-
     const params = new URLSearchParams(window.location.search);
     const appointmentId = params.get("appointmentId");
 
@@ -113,7 +157,6 @@ async function cancelAppointment() {
       window.location.replace("home.html");
       return;
     }
-
 
     const response = await fetch(
       `http://localhost:3000/appointments/${appointmentId}`,
@@ -125,24 +168,41 @@ async function cancelAppointment() {
         body: JSON.stringify({
           status: "cancelled",
         }),
-      }
+      },
     );
-
 
     const updatedAppointment = await response.json();
 
     console.log(updatedAppointment);
 
-
     // alert("تم إلغاء الحجز");
-
 
     window.location.replace("home.html");
     return;
-
-
   } catch (error) {
     console.error("خطأ في إلغاء الحجز:", error);
   }
 }
-  // cancelAppointment();
+
+function getStatusText(status) {
+  switch (status) {
+    case "waiting":
+      return "في الانتظار";
+
+    case "called":
+      return "تم النداء";
+
+    case "in_consultation":
+      return "جاري الكشف";
+
+    case "completed":
+      return "تم الانتهاء";
+
+    case "cancelled":
+      return "تم الإلغاء";
+
+    default:
+      return status;
+  }
+}
+// cancelAppointment();
