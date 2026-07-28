@@ -26,4 +26,62 @@ export default async function checkPatientAppointment(patientUserId) {
       `queue-tracking.html?appointmentId=${activeAppointment.id}`;
     return;
   }
+  const now = new Date();
+
+        const today = now.toISOString().split("T")[0];
+
+        // معرفة اليوم الحالي
+        const days = [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+        ];
+
+        const todayName = days[now.getDay()];
+
+        const currentTime = now.toTimeString().slice(0, 5);
+
+        // 1) جلب الحجوزات
+
+        const todayAppointments = appointments.filter(
+            (app) => app.doctorId === doctorId && app.booking_date === today,
+        );
+
+        const nextQueueNumber = todayAppointments.length + 1;
+
+        // 2) جلب بيانات الدكتور
+        const docRes = await fetch("http://localhost:3000/doctor_profiles");
+
+        const doctorProfiles = await docRes.json();
+
+        const docProfile = doctorProfiles.find((doctor) => doctor.id === doctorId);
+
+        if (!docProfile) {
+            throw new Error("Doctor not found");
+        }
+
+        // 3) معرفة جدول الدكتور الحالي
+        const scheduleRes = await fetch("http://localhost:3000/schedules");
+
+        const schedules = await scheduleRes.json();
+
+        const currentSchedule = schedules.find(
+            (schedule) =>
+                schedule.doctorId === doctorId &&
+                schedule.day_of_week === todayName &&
+                schedule.is_active === true &&
+                currentTime >= schedule.start_time &&
+                currentTime <= schedule.end_time,
+        );
+
+        if (!currentSchedule) {
+            alert("الدكتور غير متاح للحجز حاليا");
+            window.location.href = "home.html";
+            return;
+        }
+  
 }
