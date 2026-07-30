@@ -33,9 +33,6 @@ function showPassrepete() {
 }
 
 
-
-
-
 // **************************** Form ********************/
 
 let form = document.getElementById("registerForm");
