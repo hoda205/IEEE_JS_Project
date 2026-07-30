@@ -15,6 +15,7 @@ changePassBtn.addEventListener("click", async (e) => {
 
   let isValid = true;
 
+  if(currentPss.value === "" || confirmPass.value === "" || newPass.value === "") return;
   // تم تحديث الـ Selector ليتناسب مع الهيكل الجديد للـ HTML بعد إضافة Wrapper
   if (currentPss.value !== user.password) {
     document.querySelector("#currentPssError").textContent =
