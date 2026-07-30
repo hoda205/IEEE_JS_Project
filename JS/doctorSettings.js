@@ -48,11 +48,6 @@ document.querySelector('.delete-row-btn').addEventListener('click', function(e) 
     e.target.closest('tr').remove();
 
 });
-document.querySelector('.btn-save').addEventListener('click', function() {
-
-    alert('تم حفظ جميع التغييرات وبيانات الدكتور بنجاح!');
-
-});
 document.getElementById('booking-toggle').addEventListener('change', function(e) {
 
     if (e.target.checked) {

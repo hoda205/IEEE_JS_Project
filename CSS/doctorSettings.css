@@ -83,7 +83,7 @@ body {
 
 .grid-top {
     display: grid;
-    grid-template-columns: 1.2fr 1.8fr;
+    grid-template-columns: 1fr;
     gap: 30px;
     margin-bottom: 30px;
 }
@@ -108,48 +108,6 @@ body {
     font-weight: 600;
 }
 
-.doctor-form-body {
-    display: flex;
-    gap: 25px;
-}
-
-.avatar-container {
-    position: relative;
-}
-
-.form-avatar {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.camera-badge {
-    position: absolute;
-    bottom: 5px;
-    left: 5px;
-    background-color: #0f172a;
-    color: white;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-}
-
-.inputs-container {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-.full-width {
-    grid-column: span 2;
-}
-
 .form-group {
     display: flex;
     flex-direction: column;
@@ -161,7 +119,7 @@ body {
     color: var(--text-muted);
 }
 
-input[type="text"], input[type="email"], select, input[type="time"] {
+input[type="text"], select, input[type="time"] {
     height: 44px;
     padding: 0 15px;
     border: 1px solid var(--border-color);
@@ -169,18 +127,8 @@ input[type="text"], input[type="email"], select, input[type="time"] {
     outline: none;
     font-size: 14px;
     background-color: #f8fafc;
-}
-
-.btn-primary {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    height: 44px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
     width: 100%;
-    margin-top: 20px;
+    box-sizing: border-box; 
 }
 
 .interactive-inputs {
@@ -210,10 +158,6 @@ input[type="text"], input[type="email"], select, input[type="time"] {
     flex: 1;
 }
 
-.time-picker-box input {
-    flex: 1;
-}
-
 .btn-add-place {
     background-color: #10b981;
     color: white;
@@ -222,6 +166,7 @@ input[type="text"], input[type="email"], select, input[type="time"] {
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
+    width: 100%;
 }
 
 .workplace-table {
@@ -318,7 +263,6 @@ input[type="text"], input[type="email"], select, input[type="time"] {
 
 input:checked + .slider { background-color: var(--primary-color); }
 input:checked + .slider:before { transform: translateX(18px); }
-
 .hint-text {
     font-size: 13px;
     color: var(--text-muted);
@@ -338,7 +282,8 @@ input:checked + .slider:before { transform: translateX(18px); }
 }
 
 @media (max-width: 1024px) {
-    .grid-top, .grid-bottom {
+
+    .grid-bottom {
         grid-template-columns: 1fr;
         gap: 20px;
     }
@@ -346,7 +291,6 @@ input:checked + .slider:before { transform: translateX(18px); }
         padding: 20px;
     }
 }
-
 @media (max-width: 768px) {
     .navbar {
         padding: 0 15px;
@@ -354,25 +298,35 @@ input:checked + .slider:before { transform: translateX(18px); }
     .logo span, .doc-info {
         display: none;
     }
-    .doctor-form-body {
-        flex-direction: column;
-        align-items: center;
-    }
-    .inputs-container {
-        width: 100%;
-        grid-template-columns: 1fr;
-    }
-    .full-width {
-        grid-column: span 1;
-    }
     .input-row {
-        flex-direction: column;
+        flex-direction: column; 
+        gap: 12px;
     }
     .time-picker-box {
         width: 100%;
+        justify-content: space-between;
+    }
+    .time-picker-box input[type="time"] {
+        width: 44% !important; 
+    }
+    .card {
+        padding: 15px; 
+        overflow: hidden;
+    }
+    .workplace-table {
+        display: block;
+        overflow-x: auto; 
+        white-space: nowrap;
+        width: 100%;
+        -webkit-overflow-scrolling: touch;
     }
     .workplace-table th, .workplace-table td {
-        padding: 8px 5px;
-        font-size: 12px;
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+    .badge-day {
+        display: inline-block;
+        font-size: 11px;
+        padding: 4px 6px;
     }
 }
