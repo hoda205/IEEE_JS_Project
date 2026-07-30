@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <!-- <link rel="stylesheet" href="css/bootstrap.css" /> -->
+    <title>Queue Care</title>
+
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+
+    <nav class="main-navbar">
+      <div class="back-home">
+        <a href="index.html">
+          <i class="fa-solid fa-arrow-left"></i>
+
+          الصفحه الرئيسية
+        </a>
+      </div>
+      <div class="logo">Queue Care</div>
+    </nav>
+
+    <!-- Login Section -->
+
+    <div class="login-section">
+      <div class="login-container">
+        <!-- Left Side -->
+        <!-- <div class="login-image"> -->
+          <!-- <div class="image-overlay">
+            <h1>
+              أهلاً بك في
+              <span>Queue Care</span>
+            </h1>
+
+            <p>سجل دخولك وتابع مواعيدك ودورك بسهولة وأمان.</p>
+          </div> -->
+        <!-- </div> -->
+
+        <!-- Right Side -->
+
+        <div class="login-form-container">
+          <div class="login-header">
+            <div class="login-icon">
+              <i class="fa-solid fa-user"></i>
+            </div>
+
+            <h2>تسجبل الدخول</h2>
+            <p>اختر نوع الحساب لتسجيل الدخول</p>
+          </div>
+
+          <!-- User Type -->
+
+          <div class="user-types">
+            <button type="button" class="user-type active" >
+              <i class="fa-solid fa-user"></i>
+
+              <span>مريض</span>
+            </button>
+
+            <button type="button" class="user-type">
+              <i class="fa-solid fa-user-doctor"></i>
+
+              <span>دكتور</span>
+            </button>
+          </div>
+
+          <!-- Login Form -->
+
+          <form id="loginForm">
+
+            <div class="form-group">
+              <label for="phone"> رقم الهاتف </label>
+              
+              <div class="input-box">
+                <input
+                  type="tel"
+                  id="phone"
+                  placeholder="أدخل رقم الهاتف"
+                  required
+                />
+                <i class="fa-solid fa-phone"></i>
+              </div>
+               
+            </div>
+
+            <div class="form-group">
+              <label for="password"> كلمة المرور </label>
+
+              <div class="input-box">
+                <i class="fa-solid fa-lock"></i>
+
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="أدخل كلمة المرور"
+                  required
+                />
+
+                <button type="button" class="show-password" id="showPassword" onclick="showPass()">
+                  <i class="fa-solid fa-eye" id="iconeye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="login-options">
+              <label class="remember">
+                <input type="checkbox" />
+
+                تذكرني
+              </label>
+
+              <a href="#"> نسيت كلمة المرور؟ </a>
+            </div>
+
+            <button type="submit" class="login-submit">تسجيل الدخول</button>
+
+            <p class="register-text">
+              ليس لديك حساب؟
+
+              <a href="register.html"> إنشاء حساب جديد </a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="login.js"></script>
+  </body>
+</html>

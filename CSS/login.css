@@ -1,0 +1,248 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f7ff;
+    color: #202044;
+    /* min-height: 100vh; */
+}
+
+
+   /* Navbar */
+
+.main-navbar {
+    width: 100%;
+    padding: 20px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+}
+
+.logo {
+
+    font-size: 30px;
+
+    font-weight: bold;
+
+    color: #1378CA;
+}
+
+
+.back-home a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #1378CA;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.back-home a:hover {
+    color: #063357;
+}
+
+/******************login section ***********************/
+
+.login-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 7%;
+    color: #777;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow:
+        0 15px 50px
+        rgba(0, 0, 0, 0.08);
+}
+
+.login-form-container {
+    width: 100%;
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.login-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #EAF2FA;
+    color: #1378CA;
+    font-size: 25px;
+}
+
+
+.login-header h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: #202044;
+}
+
+
+.login-header p {
+    font-size: 15px;
+}
+
+.user-types {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.user-type {
+    flex: 1;
+    padding: 18px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    color: #666;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.user-type i {
+    font-size: 25px;
+}
+.user-type span {
+    font-size: 14px;
+    font-weight: bold;
+}
+.user-type:hover {
+    border-color: #1378CA;
+    color: #1378CA;
+}
+
+.user-type.active {
+    color: #1378CA;
+    border-color: #1378CA;
+    background-color: #EAF2FA;
+}
+
+/*************************** form *********************/
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.input-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-box > i {
+    position: absolute;
+    right: 15px;
+    color: #1378CA;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 14px 45px 14px 45px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    font-size: 15px;
+    transition: 0.3s;
+}
+.input-box input:focus {
+    border-color: #1378CA;
+}
+
+.show-password {
+    position: absolute;
+    left: 15px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #777;
+    font-size: 16px;
+}
+
+
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #555;
+}
+
+.login-options a {
+    color: #1378CA;
+    text-decoration: none;
+}
+
+.login-options a:hover {
+    text-decoration: underline;
+}
+
+.login-submit {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    background-color: #1378CA;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+.login-submit:hover {
+    background-color: #063357;
+    transform: translateY(-2px);
+}
+
+
+.register-text {
+    text-align: center;
+    margin-top: 25px;
+}
+
+
+.register-text a {
+    color: #1378CA;
+    text-decoration: none;
+    font-weight: bold;
+}
