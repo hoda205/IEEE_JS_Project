@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اعدادات الحساب</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/doctorSettings.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-right">
+            <i class="fa-solid fa-bars menu-icon"></i>
+            <div class="logo">
+                <i class="fa-solid fa-heart-pulse logo-icon"></i>
+                <span>CareLink</span>
+            </div>
+        </div>
+        <div class="nav-left">
+            <div class="doctor-profile">
+                <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=100&q=80" alt="صورة الدكتور" class="avatar">
+                <div class="doc-info">
+                    <span class="doc-name">د. أحمد محمود <i class="fa-solid fa-chevron-down arrow-icon"></i></span>
+                    <span class="doc-title">طبيب عام</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="page-title">
+            <h2>إعدادات الحساب</h2>
+        </div>
+
+        <div class="grid-top">
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3>جدول أماكن العمل وتحديد المواعيد</h3>
+                </div>
+                
+                <div class="interactive-inputs">
+                    <div class="input-row">
+                        <input type="text" id="place-name" placeholder="اسم المكان (مثال: عيادة خاصة)">
+                        <input type="text" id="place-address" placeholder="العنوان">
+                    </div>
+                    <div class="input-row">
+                        <select id="place-day">
+                            <option value="السبت">السبت</option>
+                            <option value="الأحد">الأحد</option>
+                            <option value="الإثنين">الإثنين</option>
+                            <option value="الثلاثاء">الثلاثاء</option>
+                            <option value="الأربعاء">الأربعاء</option>
+                            <option value="الخميس">الخميس</option>
+                            <option value="الجمعة">الجمعة</option>
+                        </select>
+                        <div class="time-picker-box">
+                            <input type="time" id="place-start" value="09:00">
+                            <span>إلى</span>
+                            <input type="time" id="place-end" value="21:00">
+                        </div>
+                    </div>
+                    <button id="add-place-btn" class="btn-add-place"><i class="fa-solid fa-plus"></i> إضافة المكان والجدول</button>
+                </div>
+
+                <table class="workplace-table">
+                    <thead>
+                        <tr>
+                            <th>المكان</th>
+                            <th>العنوان</th>
+                            <th>المواعيد والأيام</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="workplace-tbody">
+                        <tr>
+                            <td>مستشفى النيل الدولي</td>
+                            <td>مدينة نصر - القاهرة</td>
+                            <td><span class="badge-day">الأحد (09:00 AM - 09:00 PM)</span></td>
+                            <td><i class="fa-solid fa-trash delete-row-btn"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="grid-bottom">
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-clock shadow-icon"></i>ساعات العمل</h3>
+                </div>
+                <div class="static-schedule">
+                    <div class="static-row"><span>السبت</span> <span>09:00 AM - 09:00 PM</span></div>
+                    <div class="static-row"><span>الأحد</span> <span>02:00 PM - 09:00 PM</span></div>
+                    <div class="static-row"><span>الإثنين</span> <span>09:00 AM - 09:00 PM</span></div>
+                    <div class="static-row"><span>الثلاثاء</span> <span>09:00 AM - 02:00 PM</span></div>
+                    <div class="static-row"><span>الأربعاء</span> <span>02:00 PM - 09:00 PM</span></div>
+                    <div class="static-row"><span>الخميس</span> <span>09:00 AM - 05:00 PM</span></div>
+                    <div class="static-row"><span>الجمعة</span> <span>09:00 AM - 05:00 PM</span></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-sliders shadow-icon"></i> إعدادات الحجز</h3>
+                </div>
+                <div class="booking-settings">
+                    <div class="toggle-group">
+                        <span>الحجز مفتوح</span>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="setting-row"><span>20</span> <label>عدد المرضى اليوم</label></div>
+                    <div class="setting-row"><span>20</span> <label>مدة الكشف (بالدقائق)</label></div>
+                    <div class="setting-row"><span>300</span> <label>سعر الكشف (جنيه)</label></div>
+                    <div class="setting-row"><span>150</span> <label>غرامة عدم الحضور (جنيه)</label></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-hourglass-half shadow-icon"></i> مدة الانتظار بعد النداء</h3>
+                </div>
+                <p class="hint-text">الوقت الذي ينتظر فيه المريض بعد النداء قبل الدخول للكشف</p>
+                <div class="waiting-display">
+                    <span class="waiting-num">5</span>
+                    <span class="unit-text">دقائق</span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="../JS/doctorSettings.js"></script>
+</body>
+</html>

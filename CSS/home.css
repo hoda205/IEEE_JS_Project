@@ -1,0 +1,208 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f7f9fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 450px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    padding: 24px;
+    border: 1px solid #edf2f7;
+}
+
+.doctor-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.doctor-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.doctor-details h2 {
+    font-size: 18px;
+    color: #1a202c;
+    margin-bottom: 4px;
+}
+
+.doctor-details .specialty {
+    font-size: 14px;
+    color: #718096;
+    margin-bottom: 4px;
+}
+
+.doctor-details .rating {
+    font-size: 12px;
+    color: #a0aec0;
+}
+
+.clinic-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: #fafbfc;
+    border: 1px dashed #e2e8f0;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.clinic-loc {
+    display: flex;
+    gap: 12px;
+}
+
+.clinic-loc h3 {
+    font-size: 16px;
+    color: #1a202c;
+    margin-bottom: 4px;
+}
+
+.clinic-loc p {
+    font-size: 13px;
+    color: #718096;
+    margin-bottom: 6px;
+}
+
+.map-link {
+    font-size: 12px;
+    color: #3182ce;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.status {
+    text-align: left;
+}
+
+.status span {
+    display: block;
+    font-size: 12px;
+    color: #a0aec0;
+    margin-bottom: 4px;
+}
+
+.confirmed {
+    color: #38a169;
+    font-size: 15px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.stat-box {
+    background: #fff;
+    border: 1px solid #edf2f7;
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.01);
+}
+
+.stat-box span {
+    display: block;
+    font-size: 11px;
+    color: #718096;
+    margin-bottom: 8px;
+}
+
+.stat-box p {
+    font-size: 10px;
+    color: #a0aec0;
+    margin-bottom: 4px;
+}
+
+.stat-box strong {
+    font-size: 16px;
+    color: #1a202c;
+}
+
+.book-btn {
+    width: 100%;
+    background: #44337a;
+    color: #fff;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.book-btn:hover {
+    background: #322659;
+}
+@media (max-width: 480px) {
+    .card {
+        padding: 16px;
+        margin: 10px;
+    }
+
+    .doctor-img {
+        width: 60px;
+        height: 60px;
+    }
+    .doctor-details h2 {
+        font-size: 16px;
+    }
+    .clinic-info {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .status {
+        text-align: right;
+        width: 100%;
+        border-top: 1px solid #edf2f7;
+        padding-top: 12px;
+    }
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    .stat-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: right;
+        padding: 10px 16px;
+    }
+    .stat-box span {
+        margin-bottom: 0;
+    }
+}
+.book-btn.btn-disabled {
+  background-color: #ccc !important;
+  color: #666 !important;
+  cursor: not-allowed !important;
+  border: none;
+  opacity: 0.7;
+}
+.fa-star{
+    color: orange;
+}
+.fa-location-dot{
+    color: rgb(217, 83, 79);
+    font-size: 1.2rem;
+}
