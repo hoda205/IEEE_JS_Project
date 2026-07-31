@@ -1,12 +1,13 @@
   import { checkAuth } from "../checkAuth.js";
 
-async function loadPatient() {
 
-  const patientId = "1";
+export async function loadPatient() {
 
-  const data = await getPatientDetails(patientId);
+  const patient = checkAuth();
 
-  console.log(data);
+  const data = await getPatientDetails(patient.id);
+  // console.log(data)
+  return data;
 
 }
 
@@ -14,7 +15,7 @@ loadPatient();
 
 
 // جلب تفاصيل المريض بالكامل
-async function getPatientDetails(patientUserId) {
+export async function getPatientDetails(patientUserId) {
   try {
     const [userRes, profileRes, historyRes] = await Promise.all([
       fetch("http://localhost:3000/users"),

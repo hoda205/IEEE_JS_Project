@@ -15,13 +15,7 @@ if (patient) {
     if (!queue) return;
 
     console.log(queue);
-
-    // مثال لعرض البيانات
-    // document.getElementById("myQueue").textContent = queue.myQueueNumber;
-    // document.getElementById("currentQueue").textContent = queue.currentQueueNumber;
-    // document.getElementById("patientsAhead").textContent = queue.patientsAhead;
-    // document.getElementById("estimatedTime").textContent = queue.estimatedMinutes;
-  }
+}
 
 // جلب الأرشيف الطبي للمريض
 async function getPatientMedicalHistory(patientUserId) {

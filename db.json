@@ -2,12 +2,12 @@
   "users": [
     {
       "id": "1",
-      "full_name": "أحمد محمود",
-      "phone_number": "01012345678",
-      "password": "hashed_pass_123",
+      "full_name": "هدي ",
+      "phone_number": "01098706769",
+      "password": "123",
       "role": "patient",
-      "date_of_birth": "1995-05-15",
-      "profile_image": "default.png"
+      "date_of_birth": "2005-11-11",
+      "profile_image": "images.jfif"
     },
     {
       "id": "2",
