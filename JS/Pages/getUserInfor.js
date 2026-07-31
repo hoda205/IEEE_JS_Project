@@ -50,7 +50,7 @@ async function editInfoFunc() {
 
   fullN.value = data["full_name"];
   phoneN.value = data["phone_number"];
-  dateB.value = data["date_of_birth"];
+  dateB.value = formatToInputDate(data["date_of_birth"]);
 
   document.querySelector("#phoneN + p").textContent = "";
   document.querySelector("#fullN + p").textContent = "";
@@ -74,3 +74,16 @@ function changePassFunc() {
 editInfo.addEventListener("click", editInfoFunc);
 editPass.addEventListener("click", changePassFunc);
 cancelBtn.addEventListener("click", hiddenModal);
+
+function formatToInputDate(dateStr) {
+    if (!dateStr) return '';
+    // تقسيم التاريخ بناءً على الشرطة -
+    const parts = dateStr.split('-'); 
+    // التأكد من أن التاريخ يتكون من 3 أجزاء (يوم، شهر، سنة)
+    if (parts.length === 3) {
+        const [day, month, year] = parts;
+        // إعادة الترتيب ليصبح السنة-الشهر-اليوم
+        return `${year}-${month}-${day}`; 
+    }
+    return dateStr;
+}
