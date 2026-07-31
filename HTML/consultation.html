@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content>
+        <meta name="keywords" content>
+        <link rel="stylesheet" href="../CSS/consultationStyle.css">
+        <link rel="shortcut icon" href="../assets/prescription.png"
+            type="image/x-icon">
+        <title>الروشتة</title>
+    </head>
+    <body>
+        <main>
+            <div id="page">
+                <h1>الروشتة</h1>
+                <div id="patient-details">
+                    <div>
+                        <h3>بيانات المريض :</h3>
+                    </div>
+                    <div id="name">
+                        <h4>الاسم:</h4>
+                    </div>
+                    <div id="age">
+                        <h4>العمر:</h4>
+
+                    </div>
+                    <div id="date">
+                        <h4>تاريخ الزيارة :</h4>
+                    </div>
+                </div>
+                <form action method="get">
+                    <label for="diagnosis">التشخيص</label>
+                    <textarea name="diagnosis" id="diagnosis"
+                        required></textarea>
+                    <label for="notes">ملاحظات</label>
+                    <textarea name="notes" id="notes" required></textarea>
+                    <label for="consultation">الوصفة/الخطة العلاجية</label>
+                    <table id="medicine">
+                        <thead>
+                            <tr>
+                                <th>رقم</th>
+                                <th>الدواء</th>
+                                <th>الجرعة</th>
+                                <th>المدة</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                    <button type="button" id="add">اضافة دواء</button>
+                    <button type="button" id="delete">حذف الدواء</button>
+                    <button type="submit" id="firstBtn">حفظ و انهاء
+                        الروشتة</button>
+                    <button type="button" class="download" id="secondBtn"
+                        disabled>طباعة الروشتة</button>
+                </form>
+            </div>
+        </main>
+        <script src="../JS/Pages/consultation/displayPatientData.js"
+            type="module"></script>
+        <script src="../JS/Pages/consultation/addMedicine.js"></script>
+        <script src="../JS/Pages/consultation/deleteMedicine.js"></script>
+        <script src="../JS/Pages/consultation/printConsultation.js"
+            type="module"></script>
+        <script type="module"
+            src="../JS/Pages/consultation/handleSaveConsultation.js"></script>
+        <script src="../JS/initialSetup.js"></script>
+    </body>
+</html>
