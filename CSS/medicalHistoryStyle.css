@@ -1,0 +1,108 @@
+*{
+    margin: 10px;
+    padding: 0;
+    background-color: var(--main-bg-color);
+    font-family: "Cairo", sans-serif;
+    font-weight: bold;
+}
+:root{
+    --dark-navy:#014479;
+    --vivid-blue:#1378CA;
+    --pastel-blue:#BAE0FF;
+    --off-white:#EAF2FA;
+    --main-bg-color:#FEFEFE;
+    --gray:#818390
+}
+main{
+    padding-top: 2%;
+    width: 95%;
+    margin:auto;
+}
+@media (min-width: 576px) {
+    main{
+        width:90%;
+    }
+}
+
+@media (min-width: 768px) { 
+    main{
+        width:85%
+    }
+}
+
+@media (min-width: 992px) { 
+    main{
+        width:60%
+    }
+}
+
+h1{
+    color: var(--dark-navy);
+    font-size: 2rem;
+}
+h3{
+    color: var(--vivid-blue);
+    font-size: 1.2rem;
+}
+h4{
+    color: var(--vivid-blue);
+}
+
+.card,#medical-history,#patient-details,.visit-card{
+    border-radius: 10px;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.17);
+    padding: 1%;
+    width: 98%;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    gap: 1%;
+}
+#name,#age{
+    display: flex;
+}
+.visit-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.visit-card {
+    padding: 2%;
+}
+.visit-details{
+    border-top:1px solid  rgba(0, 0, 0, 0.17);
+}
+table {
+    width: 98%;
+    border-collapse: collapse;
+    padding: 2%;
+}
+
+th{
+    color:var(--vivid-blue);
+    border: 1px solid var(--vivid-blue);
+    border-radius: 6px;
+    padding: 2%;
+}
+tr td{
+    text-align: center;
+    border: 1px solid #000000;
+    border-radius: 6px;
+    padding: 2%;
+}
+button{
+    background-color: var(--vivid-blue);
+    color: var(--off-white);
+    padding: 1%;
+    border: none;
+    border-radius: 6px;
+    height: 44px;
+    transition: 0.4s;
+}
+button:hover{
+    background-color: var(--dark-navy);
+    opacity: 0.9;
+    padding: 1%;
+    border: 1px solid var(--dark-navy);
+}
