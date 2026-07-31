@@ -1,3 +1,5 @@
+ import isUser from "../isUser.js";
+    isUser();
 // 1. تحديد العناصر من الـ DOM
 const loginForm = document.getElementById("loginForm");
 const phoneInput = document.getElementById("phone");
