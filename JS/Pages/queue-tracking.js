@@ -132,10 +132,13 @@ async function getQueueTracking(patientUserId) {
         app.queue_number < myApp.queue_number &&
         (app.status === "waiting" || app.status === "called"),
     ).length;
-
+    // console.log(currentPatient);
+    // if(!currentPatient)
+    //   currentPatient.queue_number = myApp.queue_number;
+    console.log(myApp.queue_number)
     return {
       myQueueNumber: myApp.queue_number,
-      currentQueueNumber: currentPatient ? currentPatient.queue_number : 0,
+      currentQueueNumber: currentPatient ? currentPatient.queue_number : myApp.queue_number,
       patientsAhead,
       estimatedMinutes: patientsAhead * 15,
       status: myApp.status,

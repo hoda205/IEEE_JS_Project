@@ -1,0 +1,250 @@
+:root {
+    --dark-navy: #014479;
+    --vivid-blue: #1378ca;
+    --pastel-blue: #bae0ff;
+    --off-white: #eaf2fa;
+    --main-bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --gray: #818390;
+    --danger: #e63946;
+    --border-color: #e2e8f0;
+}
+
+/* Reset & Global Rules */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Cairo", sans-serif;
+}
+
+body {
+    background-color: var(--main-bg-color);
+    color: #333;
+    direction: rtl;
+    line-height: 1.6;
+}
+
+main {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+h1 {
+    color: var(--dark-navy);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h3 {
+    color: var(--vivid-blue);
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+h4 {
+    color: var(--dark-navy);
+    margin-bottom: 15px;
+}
+
+/* Card Container Styling */
+.card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    border: 1px solid var(--border-color);
+}
+
+.card img {
+    flex-shrink: 0;
+}
+
+.form {
+    width: 100%;
+}
+
+/* Payment Methods Grid */
+#form1 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.payment-option {
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+.payment-option:hover {
+    border-color: var(--pastel-blue);
+}
+
+.payment-option.selected {
+    border-color: var(--vivid-blue);
+    background-color: var(--off-white);
+}
+
+.payment-option img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+/* Dynamic Details Container */
+#method-details {
+    background-color: var(--off-white);
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+.input-group label {
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: var(--dark-navy);
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row .input-group {
+    flex: 1;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: var(--vivid-blue);
+}
+
+/* Copy Button Section */
+.copy-field {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0 15px 0;
+}
+
+.copy-btn {
+    padding: 0 15px !important;
+    width: auto !important;
+    white-space: nowrap;
+    background-color: var(--vivid-blue);
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Policy & Buttons */
+ul {
+    list-style-type: none;
+    padding-right: 0;
+    margin: 10px 0;
+}
+
+ul li {
+    position: relative;
+    padding-right: 20px;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+ul li::before {
+    content: "•";
+    color: var(--vivid-blue);
+    font-size: 1.2rem;
+    position: absolute;
+    right: 0;
+    top: -2px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 15px 0;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+button {
+    width: 100%;
+    height: 45px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:enabled {
+    background-color: var(--vivid-blue);
+    color: white;
+}
+
+button:enabled:hover {
+    background-color: var(--dark-navy);
+}
+
+button:disabled {
+    background-color: var(--gray);
+    color: #fff;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#backBtn {
+    background-color: transparent;
+    color: var(--gray);
+    border: 1px solid var(--border-color);
+}
+
+#backBtn:hover {
+    background-color: #f1f5f9;
+    color: #333;
+}
+
+.error {
+    font-size: 0.8rem;
+    color: var(--danger);
+    margin-top: 4px;
+}
