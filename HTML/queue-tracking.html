@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تتبع الحجز</title>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet" href="../CSS/queueTracking.css">
+</head>
+
+<body>
+
+    <main class="queue-status">
+
+        <!-- رقم الدور -->
+        <section class="queue-card queue-main">
+
+            <h2 class="queue-card__title">
+                رقم الدور
+            </h2>
+
+            <p class="queue-number " id="myQueueNumber">
+            </p>
+
+            <h3 class="queue-card__subtitle">
+                الدور الحالي
+            </h3>
+
+            <p class="current-queue-number" id="currentQueueNumber">
+                12
+            </p>
+
+        </section>
+
+
+        <!-- عدد المرضى + الوقت المتوقع -->
+        <div class="stats-column">
+
+            <section class="queue-card">
+
+                <h2 class="queue-card__title">
+                    عدد المرضى قبلك
+                </h2>
+
+                <p class="stats-number" id="patientsAhead">
+                </p>
+
+                <p class="unit-text">
+                    مريض
+                </p>
+
+            </section>
+
+
+            <section class="queue-card">
+
+                <h2 class="queue-card__title">
+                    الوقت المتوقع
+                </h2>
+
+                <p class="stats-number" id="estimatedMinutes">
+                </p>
+
+                <p class="unit-text">
+                    دقيقة
+                </p>
+
+            </section>
+
+        </div>
+
+
+
+        <!-- حالة الحجز -->
+        <section class="queue-card status-card">
+
+            <div class="status-header">
+
+                <h2 class="queue-card__title">
+                    حالة الحجز
+                </h2>
+
+                <i class="fa-regular fa-clock booking-status-icon"></i>
+
+            </div>
+
+            <p class="booking-status" id="bookingStatus">
+            </p>
+
+        </section>
+
+
+
+        <!-- إلغاء الحجز -->
+        <button class="cancel-booking-btn" id="cancelBtn">
+            إلغاء الحجز
+        </button>
+
+
+    </main>
+    <!-- Confirmation Modal -->
+<div class="modal-overlay" id="cancelModal">
+
+    <div class="confirm-modal">
+
+        <div class="modal-icon">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+
+        <h3>إلغاء الحجز</h3>
+
+        <p>
+            هل أنت متأكد أنك تريد إلغاء الحجز؟
+        </p>
+
+        <div class="modal-actions">
+
+            <button class="confirm-cancel-btn" id="confirmCancel">
+                نعم إلغاء الحجز
+            </button>
+
+            <button class="close-modal-btn" id="closeModal">
+                لا الرجوع
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+    <script src="../JS/initialSetup.js"></script>
+    <script type="module" src="../JS/Pages/queue-tracking.js"></script>
+    <script type="module" src="../JS/conponents/header.js"></script>
+</body>
+
+</html>
