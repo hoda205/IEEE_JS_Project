@@ -1,104 +1,93 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="ar" dir="rtl">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../CSS/bookingConfirmationStyle.css">
-        <link rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-        <link rel="shortcut icon" href="../assets/online-booking.png"
-            type="image/x-icon">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+        <link rel="shortcut icon" href="../assets/online-booking.png" type="image/x-icon">
         <title>تأكيد الحجز</title>
     </head>
     <body>
         <main>
             <h1>تأكيد الحجز</h1>
+
+            <!-- رسوم الحجز -->
             <div class="card">
+                <img src="../assets/calendar-regular-full.svg" width="40" height="40" alt="Calendar">
                 <div>
-                    <img src="../assets/calendar-regular-full.svg" width="60"
-                        height="60" alt>
-                </div>
-                <div>
-                    <h3>رسوم الحجز :</h3>
+                    <h3>رسوم الحجز:</h3>
                     <p>300 جنيه</p>
                 </div>
             </div>
+
+            <!-- طريقة الدفع -->
             <div class="card">
-                <div>
-                    <img src="../assets/credit-card-regular-full.svg" width="50"
-                        height="50" alt>
-                </div>
+                <img src="../assets/credit-card-regular-full.svg" width="40" height="40" alt="Credit Card">
                 <div class="form">
-                    <h3>طريقة الدفع :</h3>
-                    <form action method="get" id="form1">
-                        <div>
-                            <img src="../assets/cc-visa-brands-solid-full.svg"
-                                width="60"
-                                height="60" alt>
-                            <label for="card">البطاقة الذكية</label>
-                            <input type="radio" name="method" id="card"
-                                required>
-                        </div>
-                        <div>
-                            <img src="../assets/instapay_50x50.svg"
-                                width="60"
-                                height="60" alt>
-                            <label for="instapay">انستا باي</label>
+                    <h3>طريقة الدفع:</h3>
+                    <form id="form1">
+                        <label for="card" class="payment-option">
+                            <img src="../assets/cc-visa-brands-solid-full.svg" alt="Smart Card">
+                            <span>البطاقة الذكية</span>
+                            <input type="radio" name="method" id="card" required>
+                        </label>
+
+                        <label for="instapay" class="payment-option">
+                            <img src="../assets/instapay_50x50.svg" alt="InstaPay">
+                            <span>إنستا باي</span>
                             <input type="radio" name="method" id="instapay">
-                        </div>
-                        <div>
-                            <img src="../assets/vodafone-8-logo-svgrepo-com.svg"
-                                width="60"
-                                height="60" alt>
-                            <label for="vodafone">فودافون كاش</label>
+                        </label>
+
+                        <label for="vodafone" class="payment-option">
+                            <img src="../assets/vodafone-8-logo-svgrepo-com.svg" alt="Vodafone Cash">
+                            <span>فودافون كاش</span>
                             <input type="radio" name="method" id="vodafone">
-                        </div>
+                        </label>
                     </form>
+
                     <div id="method-details">
-                        <h4>من فضلك اختر طريقة للدفع </h4>
+                        <h4>من فضلك اختر طريقة للدفع</h4>
                     </div>
                 </div>
             </div>
 
+            <!-- الغرامة -->
             <div class="card">
+                <img src="../assets/triangle-exclamation-solid-full.svg" width="40" height="40" alt="Warning">
                 <div>
-                    <img src="../assets/triangle-exclamation-solid-full.svg"
-                        width="50" height="50" alt>
-                </div>
-                <div>
-                    <h3>غرامة عدم الحضور :</h3>
-                    <p>سيتم تطبيق غرامة في حالة عدم الحضور</p>
-                    <p>الغرامة: 50 جنيه</p>
+                    <h3>غرامة عدم الحضور:</h3>
+                    <p>سيتم تطبيق غرامة في حالة عدم الحضور (50 جنيه)</p>
                 </div>
             </div>
 
+            <!-- سياسة الإلغاء -->
             <div class="card">
-                <div>
-                    <img src="../assets/calendar-xmark-regular-full.svg"
-                        width="50"
-                        height="50" alt>
-                </div>
+                <img src="../assets/calendar-xmark-regular-full.svg" width="40" height="40" alt="Cancel Policy">
                 <div class="form">
-                    <h3>سياسة الالغاء :</h3>
+                    <h3>سياسة الإلغاء:</h3>
                     <ul>
-                        <li>يمكنك الغاء الحجز قبل موعدك ب 60 دقيقة على
-                            الأقل</li>
-                        <li>سيتم الغاء حجزك تلقائيا فى حالة عدم الحضور</li>
-                        <li>في حالة الالغاء قم بالحجز مرة اخرى</li>
+                        <li>يمكنك إلغاء الحجز قبل موعدك بـ 60 دقيقة على الأقل.</li>
+                        <li>سيتم إلغاء حجزك تلقائياً في حالة عدم الحضور.</li>
+                        <li>في حالة الإلغاء، يمكنك الحجز مرة أخرى.</li>
                     </ul>
                     <form action method="get">
-                        <input type="checkbox" name="accept"
-                            id="accept" required>
-                        <label for="accept">أوافق على سياسة الالغاء</label>
-                        <button type="button" id="secondBtn" disabled>تأكيد
-                            الحجز</button>
-                        <button type="button" id="backBtn">رجوع</button>
+                        <div class="checkbox-group">
+                            <input type="checkbox" name="accept" id="accept" required>
+                            <label for="accept">أوافق على سياسة الإلغاء</label>
+                        </div>
+                        <div class="action-buttons">
+                            <button type="button" id="secondBtn" disabled>تأكيد الحجز</button>
+                            <button type="button" id="backBtn">رجوع</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </main>
+
         <script src="../JS/Pages/bookingConfirmation/BackBtn.js"></script>
         <script src="../JS/Pages/bookingConfirmation/paymentMethod.js" type="module"></script>
         <script src="../JS/initialSetup.js"></script>
+        <script type="module" src="../JS/conponents/header.js"></script>
     </body>
 </html>
