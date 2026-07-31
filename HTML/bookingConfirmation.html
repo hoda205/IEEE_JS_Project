@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../CSS/bookingConfirmationStyle.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+        <link rel="shortcut icon" href="../assets/online-booking.png" type="image/x-icon">
+        <title>تأكيد الحجز</title>
+    </head>
+    <body>
+        <main>
+            <h1>تأكيد الحجز</h1>
+
+            <!-- رسوم الحجز -->
+            <div class="card">
+                <img src="../assets/calendar-regular-full.svg" width="40" height="40" alt="Calendar">
+                <div>
+                    <h3>رسوم الحجز:</h3>
+                    <p>300 جنيه</p>
+                </div>
+            </div>
+
+            <!-- طريقة الدفع -->
+            <div class="card">
+                <img src="../assets/credit-card-regular-full.svg" width="40" height="40" alt="Credit Card">
+                <div class="form">
+                    <h3>طريقة الدفع:</h3>
+                    <form id="form1">
+                        <label for="card" class="payment-option">
+                            <img src="../assets/cc-visa-brands-solid-full.svg" alt="Smart Card">
+                            <span>البطاقة الذكية</span>
+                            <input type="radio" name="method" id="card" required>
+                        </label>
+
+                        <label for="instapay" class="payment-option">
+                            <img src="../assets/instapay_50x50.svg" alt="InstaPay">
+                            <span>إنستا باي</span>
+                            <input type="radio" name="method" id="instapay">
+                        </label>
+
+                        <label for="vodafone" class="payment-option">
+                            <img src="../assets/vodafone-8-logo-svgrepo-com.svg" alt="Vodafone Cash">
+                            <span>فودافون كاش</span>
+                            <input type="radio" name="method" id="vodafone">
+                        </label>
+                    </form>
+
+                    <div id="method-details">
+                        <h4>من فضلك اختر طريقة للدفع</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الغرامة -->
+            <div class="card">
+                <img src="../assets/triangle-exclamation-solid-full.svg" width="40" height="40" alt="Warning">
+                <div>
+                    <h3>غرامة عدم الحضور:</h3>
+                    <p>سيتم تطبيق غرامة في حالة عدم الحضور (50 جنيه)</p>
+                </div>
+            </div>
+
+            <!-- سياسة الإلغاء -->
+            <div class="card">
+                <img src="../assets/calendar-xmark-regular-full.svg" width="40" height="40" alt="Cancel Policy">
+                <div class="form">
+                    <h3>سياسة الإلغاء:</h3>
+                    <ul>
+                        <li>يمكنك إلغاء الحجز قبل موعدك بـ 60 دقيقة على الأقل.</li>
+                        <li>سيتم إلغاء حجزك تلقائياً في حالة عدم الحضور.</li>
+                        <li>في حالة الإلغاء، يمكنك الحجز مرة أخرى.</li>
+                    </ul>
+                    <form action method="get">
+                        <div class="checkbox-group">
+                            <input type="checkbox" name="accept" id="accept" required>
+                            <label for="accept">أوافق على سياسة الإلغاء</label>
+                        </div>
+                        <div class="action-buttons">
+                            <button type="button" id="secondBtn" disabled>تأكيد الحجز</button>
+                            <button type="button" id="backBtn">رجوع</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <script src="../JS/Pages/bookingConfirmation/BackBtn.js"></script>
+        <script src="../JS/Pages/bookingConfirmation/paymentMethod.js" type="module"></script>
+        <script src="../JS/initialSetup.js"></script>
+        <script type="module" src="../JS/conponents/header.js"></script>
+    </body>
+</html>
