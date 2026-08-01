@@ -1,14 +1,14 @@
 import { loadPatient } from "./getPatientDetails.js";
-
+import { updateUser } from "./updateUserData.js";
 async function loadUserInfo() {
   let userInfo = await loadPatient();
   let data = userInfo.userInfo;
-  
+
   let fullname = document.getElementById("fullname");
   let number = document.getElementById("number");
   let date = document.getElementById("date");
   let img = document.getElementById("profileImg");
-  
+
   fullname.textContent = data.full_name;
   number.textContent = data.phone_number;
   date.textContent = data.date_of_birth;
@@ -45,7 +45,7 @@ function showModal() {
 
 export function hiddenModal() {
   modal.classList.remove("modalApp");
-  
+
   editInfoForm.style.display = "none";
   changPassForm.style.display = "none";
   document.getElementById("editUserImgForm").style.display = "none";
@@ -63,7 +63,7 @@ async function editInfoFunc() {
 
   fullN.value = data.full_name;
   phoneN.value = data.phone_number;
-  dateB.value = formatToInputDate(data.date_of_birth);
+  dateB.value = data.date_of_birth;
 
   document.querySelector("#phoneN + p").textContent = "";
   document.querySelector("#fullN + p").textContent = "";
@@ -86,10 +86,10 @@ function changePassFunc() {
 editInfo.addEventListener("click", editInfoFunc);
 editPass.addEventListener("click", changePassFunc);
 cancelBtn.addEventListener("click", hiddenModal);
-document.getElementById("editImg").addEventListener("click", () =>{
+document.getElementById("editImg").addEventListener("click", () => {
   previewImg.style.display = "none";
-    containerFileInput.querySelector("div").style.display = "flex";
-    previewImg.src = "";
+  containerFileInput.querySelector("div").style.display = "flex";
+  previewImg.src = "";
 
   document.getElementById("editUserImgForm").style.display = "flex";
   showModal();
@@ -102,7 +102,6 @@ containerFileInput.addEventListener("click", () => {
 fileInput.addEventListener("change", () => {
   const file = fileInput.files[0];
 
-
   if (file) {
     previewImg.style.display = "block";
     containerFileInput.querySelector("div").style.display = "none";
@@ -114,8 +113,7 @@ upload.addEventListener("click", async (e) => {
   e.preventDefault();
 
   if (!fileInput.files.length) {
-    document.getElementById("uploadImgError").textContent =
-      "اختاري صورة أولاً";
+    document.getElementById("uploadImgError").textContent = "اختاري صورة أولاً";
     return;
   }
 
@@ -138,21 +136,10 @@ upload.addEventListener("click", async (e) => {
 
     const uploadData = await uploadResponse.json();
 
-    await fetch(`http://localhost:3000/users/${userId}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        profile_image: uploadData.image,
-      }),
-    });
-
-    document.getElementById(
-      "profileImg"
-    ).src = uploadData.image 
-    ? `http://localhost:3001/uploads/${uploadData.image}`
-    : `http://localhost:3001/uploads/default.png`;
+    updateUser(userId, { profile_image: `${uploadData.image}` });
+    document.getElementById("profileImg").src = uploadData.image
+      ? `http://localhost:3001/uploads/${uploadData.image}`
+      : `http://localhost:3001/uploads/default.png`;
 
     document.getElementById("editUserImgForm").style.display = "none";
     hiddenModal();
@@ -166,25 +153,39 @@ upload.addEventListener("click", async (e) => {
 });
 deleteImage.addEventListener("click", async (e) => {
   e.preventDefault();
-  let userInfo = await loadPatient();
-  
-  const userId = userInfo.userInfo.id;
-  const response = await fetch(`http://localhost:3000/users/${userId}`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
+
+  try {
+    let userInfo = await loadPatient();
+    const user = userInfo.userInfo;
+    const userId = user.id;
+
+    // حذف الصورة من فولدر الباك
+    if (user.profile_image && user.profile_image !== "default.png") {
+      const response = await fetch(
+        `http://localhost:3001/upload/${user.profile_image}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      console.log("Delete image:", await response.text());
+    }
+
+    // تحديث الداتا في json-server
+    const isUpdate = await updateUser(userId, {
       profile_image: "default.png",
-    }),
-  });
+    });
 
-  if (response.ok) {
-    const img = document.getElementById("profileImg");
+    if (!isUpdate) return;
 
-    img.src = `http://localhost:3001/uploads/default.png?t=${Date.now()}`;
+    // تغيير الصورة في الصفحة
+    document.getElementById("profileImg").src =
+      `http://localhost:3001/uploads/default.png?t=${Date.now()}`;
 
     hiddenModal();
+
+  } catch (error) {
+    console.log(error);
   }
 });
 

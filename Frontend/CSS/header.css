@@ -73,6 +73,7 @@
 }
 
 .patient-header .userInfo ul {
+  list-style: none;
   position: absolute;
   top: 120%;
   right: 0; /* التعديل هنا لضبط محاذاة القائمة تحت الصورة */
@@ -110,4 +111,5 @@
 }
 .logout{
     color: #d9534f;
+    cursor: pointer;
 }
