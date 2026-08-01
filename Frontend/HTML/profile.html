@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/profile.css">
+</head>
+
+<body>
+    <header class="header">
+        <a href="./home.html" class="back-link"><i class="fa-solid fa-chevron-right"></i></a>
+        <h1 class=" font-bold text-2xl">الملف الشخصي</h1>
+    </header>
+    <main class="md:w-[80%] lg:w-[50%] w-[95%]">
+        <div class="box">
+            <div class="edit-request ">
+                <div class="edit-img">
+                    <div class="userImg">
+                        <img id="profileImg" src="" alt="userImg">
+                        <div id="editImg">
+                            <i class="fa-solid fa-camera"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="edit">
+                    <button class="cursor-pointer" type="button" id="editInfo">تعديل البيانات الشخصية</button>
+                    <button class="cursor-pointer" type="button" id="editPass">تغيير كلمة المرور</button>
+                </div>
+            </div>
+            <div class="profile-details">
+                <div class="data">
+                    <h3>الاسم الكامل</h3>
+                    <p id="fullname">مروان خالد</p>
+                </div>
+                <div class="data">
+                    <h3>رقم الهاتف</h3>
+                    <p id="number">01098706761</p>
+                </div>
+                <div class="data">
+                    <h3>تاريخ الميلاد</h3>
+                    <p id="date">11-11-2005</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal-container " id="modalForm">
+            <div class="back-lay">
+                <div class="modal box">
+                    <header>
+                        <h3 id="modalTite">تعديل البيانات الشخصية</h3>
+                        <button type="button" id="cancelBtn"><i class="fa-solid fa-xmark"></i></button>
+                    </header>
+                    <form id="editInfoForm"  class="hidden">
+                        <div>
+                            <label for="fullN">الاسم الكامل</label>
+                            <input type="text" name="fullname" id="fullN">
+                            <p></p>
+                        </div>
+                        <div>
+                            <label for="phoneN">رقم الهاتف</label>
+                            <input type="tel" name="phoneN" id="phoneN">
+                            <p class="" id="phoneError"></p>
+                        </div>
+                        <div>
+                            <label for="dateB">تاريخ الميلاد</label>
+                            <input type="date" name="dateB" id="dateB">
+                            <p></p>
+                        </div>
+                        <button type="button" id="editInfoBtn">حفظ التعديلات</button>
+                    </form>
+                    <form id="changPassForm" class="hidden">
+                        <div>
+                            <label for="currentPss">كلمة المرور الحالية</label>
+                            <div class="password-wrapper">
+                                <input type="password" name="currentPss" id="currentPss">
+                                <i class="fa-solid fa-eye-slash toggle-password"></i>
+                                <i class="fa-solid fa-eye toggle-password d-none"></i>
+                            </div>
+                            <p id="currentPssError"></p>
+                        </div>
+
+                        <div>
+                            <label for="newPass">كلمة المرور الجديده</label>
+                            <div class="password-wrapper">
+                                <input type="password" name="newPass" id="newPass">
+                                <i class="fa-solid fa-eye-slash toggle-password"></i>
+                                <i class="fa-solid fa-eye toggle-password d-none"></i>
+                                <p id="newPassError"></p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="confirmPass">تأكيد كلمة المرور</label>
+                            <div class="password-wrapper">
+                                <input type="password" name="confirmPass" id="confirmPass">
+                                <i class="fa-solid fa-eye-slash toggle-password"></i>
+                                <i class="fa-solid fa-eye toggle-password d-none"></i>
+                            </div>
+                            <p id="confirmPassError"></p>
+                        </div>
+                        <button class="" id="changePassBtn" type="button">حفظ التعديلات</button>
+                    </form>
+                    <form id="editUserImgForm">
+                        <input id="fileInput" type="file" accept="image/*" hidden>
+                        <div id="containerFileInput">
+                            <div>
+                                <i class="fa-solid fa-image"></i>
+                                <p>اضغط لاضافة صورة</p>
+                            </div>
+                            <img id="preview" src="" style="display: none;" alt="">
+                        </div>
+                        <p id="uploadImgError"></p>
+                        <button id="upload">حفظ التعديلات</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="success-popup" id="successPopup">
+            <div class="popup-content">
+                <i class="fa-regular fa-circle-check"></i>
+                <h3>تم التحديث بنجاح</h3>
+                <div class="range"></div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="../js/initialSetup.js"></script>
+    <script type="module" src="../JS/checkAuth.js"></script>
+    <script type="module" src="../JS/Pages/updateUserData.js"></script>
+    <script type="module" src="../JS/Pages/changePass.js"></script>
+    <script type="module" src="../JS/Pages/getUserInfor.js"></script>
+</body>
+
+</html>

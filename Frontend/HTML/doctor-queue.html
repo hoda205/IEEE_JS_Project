@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today's Queue</title>
+    <link rel="stylesheet" href="../CSS/doctor-queue.css">
+
+</head>
+<body>
+    <div id="pageContent">
+    <main>
+    <div>
+        <div class="container">
+            <div class="page-header">
+                <div>
+                    <h1>حجوزات اليوم</h1>
+                    <p>إدارة المرضى وحجوزات اليوم</p>
+                </div>
+
+                <div class="buttons">
+                    <button id="refreshBtn" class="refresh-btn">
+                        <i class="fa-solid fa-rotate-right"></i>
+                        تحديث
+                    </button>
+
+                    <button  id="addPatientBtn" class="add-btn">
+                        <i class="fa-solid fa-plus"></i>
+                        إضافة مريض
+                    </button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>رقم الدور</th>
+                            <th>اسم المريض</th>
+                            <th>رقم الهاتف</th>
+                            <th>موعد الحجز</th>
+                            <th>الحالة</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="queueBody">
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+</main>
+
+
+<div id="addPatientModal" class="modal">
+
+    <div class="modal-content">
+
+        <button id="closeModal" class="close-btn">&times;</button>
+
+        <h2>إضافة مريض</h2>
+
+        <form id="patientForm">
+
+            <div class="input-group">
+
+                <label for="patientName">اسم المريض</label>
+
+                <input
+                    type="text"
+                    id="patientName"
+                    placeholder="أدخل اسم المريض"
+                    required>
+
+            </div>
+
+            <div class="input-group">
+
+                <label for="patientPhone">رقم الهاتف</label>
+
+                <input
+                    type="tel"
+                    id="patientPhone"
+                    placeholder="01xxxxxxxxx"
+                    required>
+
+            </div>
+
+            <div class="input-group">
+
+                <label for="appointmentDate">يوم الحجز</label>
+
+                <input
+                    type="date"
+                    id="appointmentDate"
+                    required>
+
+            </div>
+
+            <div class="input-group">
+
+                <label for="appointmentTime">موعد الحجز</label>
+
+                <input
+                    type="time"
+                    id="appointmentTime"
+                    required>
+
+            </div>
+
+            <div class="modal-buttons">
+
+                <button
+                    type="submit"
+                    class="save-btn">
+                    إضافة المريض
+                </button>
+
+                <button
+                    type="button"
+                    id="cancelBtn"
+                    class="cancel-btn">
+                    إلغاء
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+    <script src="../JS/initialSetup.js"></script>
+    <script src="../JS/doctor-queue.js"></script>
+</body>
+
+</html>

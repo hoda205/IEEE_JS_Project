@@ -1,0 +1,306 @@
+:root {
+    --vivid-blue: #1378ca;
+    --dark-navy: #014479;
+    --bg-color: #f5f7fb;
+    --card-bg: #ffffff;
+    --text-primary: #1e293b;
+    --text-muted: #64748b;
+    --danger-red: #dc2626;
+    --danger-light: #fee2e2;
+    --border-color: #e2e8f0;
+    --radius-lg: 16px;
+    --radius-md: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: 'Cairo', sans-serif;
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    width: 100%;
+    padding: 2rem 1rem;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* يتوسط الحاوية رأسياً للشاشات الكبيرة */
+}
+
+/* ================= Queue Status Layout ================= */
+
+.queue-status {
+    width: 100%;
+    /* تقييد العرض الأقصى لكي لا يمتد بشكل مبالغ فيه على الشاشات الكبيرة */
+    max-width: 620px; 
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    align-items: stretch;
+}
+
+/* ================= Card Styling ================= */
+
+.queue-card {
+    background: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.queue-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.queue-card__title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--dark-navy);
+}
+
+.queue-card__subtitle {
+    margin-top: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* ================= Numbers & Stats ================= */
+
+.queue-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--vivid-blue);
+    line-height: 1.1;
+}
+
+.current-queue-number {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.stats-column {
+    grid-column: 2;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1.25rem;
+}
+
+.stats-number {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--vivid-blue);
+    line-height: 1.1;
+}
+
+.unit-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+/* ================= Status Card ================= */
+
+.status-card {
+    grid-column: 1 / -1;
+    align-items: stretch;
+    position: relative;
+    padding: 1.25rem 1.5rem;
+}
+
+.status-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.booking-status-icon {
+    font-size: 1.5rem;
+    color: var(--vivid-blue);
+}
+
+.booking-status {
+    margin-top: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--vivid-blue);
+}
+
+/* ================= Buttons ================= */
+
+.cancel-booking-btn {
+    height: fit-content;
+    grid-column: 1 / -1;
+    width: 100%;
+    border-radius: var(--radius-md);
+    padding: 0.85rem;
+    color: var(--danger-red);
+    background: transparent;
+    border: 2px solid var(--danger-red);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.cancel-booking-btn:hover {
+    background: var(--danger-red);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+}
+
+.cancel-booking-btn:active {
+    transform: scale(0.99);
+}
+
+/* ================= Modal ================= */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(4px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    z-index: 1000;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.confirm-modal {
+    width: min(100%, 380px);
+    background: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    text-align: center;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    animation: modalShow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalShow {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.modal-icon {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--danger-light);
+    color: var(--danger-red);
+    font-size: 1.4rem;
+}
+
+.confirm-modal h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.confirm-modal p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.modal-actions button {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.confirm-cancel-btn {
+    background: var(--danger-red);
+    color: #ffffff;
+}
+
+.confirm-cancel-btn:hover {
+    background: #b91c1c;
+}
+
+.close-modal-btn {
+    background: #f1f5f9;
+    color: var(--text-primary);
+}
+
+.close-modal-btn:hover {
+    background: #e2e8f0;
+}
+
+/* ================= Media Queries ================= */
+
+/* Mobile & Small Screens (600px and down) */
+@media (max-width: 600px) {
+    main {
+        padding: 1rem 0.75rem;
+        align-items: flex-start;
+    }
+
+    .queue-status {
+        grid-template-columns: 1fr;
+    }
+
+    .queue-main {
+        grid-column: 1;
+    }
+
+    .stats-column {
+        grid-column: 1;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 1fr;
+    }
+
+    .queue-card {
+        padding: 1.25rem 1rem;
+    }
+
+    .modal-actions {
+        flex-direction: column-reverse;
+    }
+}
