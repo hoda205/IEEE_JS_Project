@@ -4,11 +4,12 @@ function getPatientId() {
 }
 
 function calculateAge(dateOfBirth) {
+    if (!dateOfBirth) return "غير محدد"; // حماية في حالة عدم وجود تاريخ ميلاد
+
     const birthDate = new Date(dateOfBirth);
     const today = new Date();
 
     let age = today.getFullYear() - birthDate.getFullYear();
-
     const monthDiff = today.getMonth() - birthDate.getMonth();
 
     if (
@@ -21,17 +22,50 @@ function calculateAge(dateOfBirth) {
     return age;
 }
 
+// دالة لتجهيز تاريخ اليوم بتنسيق عربي مناسب (مثال: 2026/8/1)
+function getTodayDate() {
+    const today = new Date();
+    return today.toLocaleDateString("ar-EG", {
+        year: "numeric",
+        month: "numeric",
+        day: "numeric"
+    });
+}
+
 async function displayPatientData() {
     const patientId = getPatientId();
 
-    const response = await fetch("http://localhost:3000/users");
-    const users = await response.json();
+    // جلب عناصر الـ DOM بالـ ID
+    const nameContainer = document.getElementById("name");
+    const ageContainer = document.getElementById("age");
+    const dateContainer = document.getElementById("date");
 
-    const patient = users.find(user => String(user.id) === patientId);
+    if (!patientId) {
+        console.error("لم يتم العثور على ID المريض في الرابط");
+        return;
+    }
 
-    namee.innerHTML += `<p>${patient.full_name}</p>`;
-    age.innerHTML += `<p>${calculateAge(patient.date_of_birth)}</p>`;
-    date.innerHTML += `<p>${getDate}</p>`;
+    try {
+        const response = await fetch("http://localhost:3000/users");
+
+        if (!response.ok) {
+            throw new Error("فشل الاتصال بالسيرفر");
+        }
+
+        const users = await response.json();
+        const patient = users.find(user => String(user.id) === patientId);
+
+        if (patient) {
+            // عرض البيانات المجلوبة
+            if (nameContainer) nameContainer.innerHTML += ` <span>${patient.full_name}</span>`;
+            if (ageContainer) ageContainer.innerHTML += ` <span>${calculateAge(patient.date_of_birth)} سنة</span>`;
+            if (dateContainer) dateContainer.innerHTML += ` <span>${getTodayDate()}</span>`;
+        } else {
+            console.warn("المريض غير موجود بقاعدة البيانات");
+        }
+    } catch (error) {
+        console.error("حدث خطأ أثناء جلب بيانات المريض:", error);
+    }
 }
 
 displayPatientData();

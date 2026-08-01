@@ -1,35 +1,51 @@
-import saveConsultation from "./saveConsultation.js";
+import saveConsultation from './saveConsultation.js';
 
-async function handleSaveConsultation() {
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector("form");
+    const printBtn = document.getElementById("secondBtn");
 
-    let diagnosis = document.getElementById("diagnosis").value;
-    let notes = document.getElementById("notes").value;
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault(); // يمنع إعادة تحميل الصفحة
 
-    let medicines = [];
+        // 1. تفعيل زر الطباعة فوراً بعد الضغط على الحفظ
+        if (printBtn) {
+            printBtn.disabled = false;
+        }
 
-    let rows = document.querySelectorAll("#medicine tbody tr");
+        // 2. قراءة النصوص
+        const diagnosis = document.getElementById("diagnosis").value.trim();
+        const notes = document.getElementById("notes").value.trim();
 
-    rows.forEach(row => {
-        let cells = row.querySelectorAll("td");
+        // 3. قراءة أدوية الجدول
+        const medicineRows = document.querySelectorAll("#medicine tbody tr");
+        const medicines = [];
 
-        medicines.push({
-            name: cells[1].innerText,
-            dosage: cells[2].innerText,
-            duration: cells[3].innerText
+        medicineRows.forEach(row => {
+            const cells = row.querySelectorAll("td");
+            const name = cells[1].textContent.trim();
+            const dosage = cells[2].textContent.trim();
+            const duration = cells[3].textContent.trim();
+
+            if (name !== "") {
+                medicines.push({ name, dosage, duration });
+            }
+        });
+
+        // 4. قراءة الـ IDs من رابط الصفحة
+        const params = new URLSearchParams(window.location.search);
+        const patientId = params.get("id");
+        const appointmentId = params.get("appointmentId") || "1";
+        const doctorId = params.get("doctorId") || "1";
+
+        // 5. استدعاء دالة الحفظ
+        await saveConsultation({
+            appointmentId,
+            patientId,
+            doctorId,
+            diagnosis,
+            notes,
+            medicines
         });
     });
-
-    await saveConsultation({
-        appointmentId: "1001",
-        patientId: "1",
-        doctorId: "1",
-        diagnosis,
-        notes,
-        medicines
-    });
-}
-
-document.getElementById("firstBtn").addEventListener("click", (e) => {
-    e.preventDefault();
-    handleSaveConsultation();
+    
 });
