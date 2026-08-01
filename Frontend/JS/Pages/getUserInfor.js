@@ -12,10 +12,10 @@ async function loadUserInfo() {
   fullname.textContent = data.full_name;
   number.textContent = data.phone_number;
   date.textContent = data.date_of_birth;
-
+  // console.log(data.profile_image)
   img.src = data.profile_image
     ? `http://localhost:3001/uploads/${data.profile_image}`
-    : "../../assets/users/default.png";
+    : `http://localhost:3001/uploads/default.png`;
 }
 
 loadUserInfo();
@@ -38,7 +38,7 @@ let containerFileInput = document.getElementById("containerFileInput");
 let fileInput = document.getElementById("fileInput");
 let previewImg = document.getElementById("preview");
 let upload = document.getElementById("upload");
-
+let deleteImage = document.getElementById("deleteImage");
 function showModal() {
   modal.classList.add("modalApp");
 }
@@ -94,7 +94,7 @@ document.getElementById("editImg").addEventListener("click", () =>{
   document.getElementById("editUserImgForm").style.display = "flex";
   showModal();
   formTitle.textContent = "تعديل صورة الملف الشخصي   ";
-})
+});
 containerFileInput.addEventListener("click", () => {
   fileInput.click();
 });
@@ -150,7 +150,9 @@ upload.addEventListener("click", async (e) => {
 
     document.getElementById(
       "profileImg"
-    ).src = `http://localhost:3001/uploads/${uploadData.image}`;
+    ).src = uploadData.image 
+    ? `http://localhost:3001/uploads/${uploadData.image}`
+    : `http://localhost:3001/uploads/default.png`;
 
     document.getElementById("editUserImgForm").style.display = "none";
     hiddenModal();
@@ -160,6 +162,29 @@ upload.addEventListener("click", async (e) => {
     console.error(error);
     document.getElementById("uploadImgError").textContent =
       "حدث خطأ أثناء رفع الصورة";
+  }
+});
+deleteImage.addEventListener("click", async (e) => {
+  e.preventDefault();
+  let userInfo = await loadPatient();
+  
+  const userId = userInfo.userInfo.id;
+  const response = await fetch(`http://localhost:3000/users/${userId}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      profile_image: "default.png",
+    }),
+  });
+
+  if (response.ok) {
+    const img = document.getElementById("profileImg");
+
+    img.src = `http://localhost:3001/uploads/default.png?t=${Date.now()}`;
+
+    hiddenModal();
   }
 });
 

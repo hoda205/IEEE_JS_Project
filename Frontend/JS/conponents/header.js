@@ -16,9 +16,9 @@ function addHeader() {
 
   // 2. إدراج الـ HTML الخاص بالـ Header
   // استخدام صورة افتراضية في حالة عدم وجود profile_image
-  const profileImgSrc = user?.profile_image 
-    ? `../assets/users/${user.profile_image}` 
-    : "../assets/default-user.png";
+  const profileImgSrc = user?.profile_image
+    ? `http://localhost:3001/uploads/${user.profile_image}`
+    : `http://localhost:3001/uploads/default.png`;
 
   document.body.insertAdjacentHTML(
     "afterbegin",

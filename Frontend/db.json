@@ -42,7 +42,7 @@
       "password": "123",
       "role": "patient",
       "date_of_birth": "11-11-2005",
-      "profile_image": "1785583468586-wallpaperflare.com_wallpaper (8).jpg",
+      "profile_image": "1785587029173-WhatsApp Image 2026-07-22 at 5.46.34 PM(1).jpeg",
       "id": "Dc4MqLnfr30"
     }
   ],
@@ -343,11 +343,24 @@
       "clinicLocationId": "101",
       "booking_date": "2026-08-01",
       "queue_number": 2,
-      "status": "waiting",
+      "status": "cancelled",
       "consultation_fee": 350,
       "no_show_penalty": 100,
       "created_at": "2026-08-01T11:44:17.836Z",
       "id": "PshDH-9O898"
+    },
+    {
+      "patientId": "Dc4MqLnfr30",
+      "doctorId": "1",
+      "scheduleId": "1",
+      "clinicLocationId": "101",
+      "booking_date": "2026-08-01",
+      "queue_number": 3,
+      "status": "cancelled",
+      "consultation_fee": 350,
+      "no_show_penalty": 100,
+      "created_at": "2026-08-01T11:58:06.836Z",
+      "id": "vCy73TDa0cA"
     }
   ],
   "medical_records": [

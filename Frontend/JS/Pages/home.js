@@ -93,7 +93,9 @@ async function renderPatientHomePage() {
 
   // 1. ملء البيانات في العناصر
   document.getElementById("doctorName").textContent = data.doctorName;
-  document.getElementById("doctorImg").src += data.doctorImage;
+  document.getElementById("doctorImg").src = data.profile_image
+    ? `http://localhost:3001/uploads/${user.profile_image}`
+    : `http://localhost:3001/uploads/default.png`;
   document.getElementById("doctorImg").alt = data.doctorName;
   document.getElementById("doctorSpecialty").textContent = data.specialty;
   document.getElementById("clinicLocation").textContent = data.location;

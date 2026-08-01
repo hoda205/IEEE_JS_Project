@@ -345,3 +345,6 @@ main{
     width: 100%;
     height: 100%;
 }
+#deleteImage{
+    background-color: #b91c1c;
+}
