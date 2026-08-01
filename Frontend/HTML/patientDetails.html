@@ -1,28 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patient Details</title>
+    <title>تفاصيل المريض</title>
+    <!-- FontAwesome Font -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../CSS/patientDetails.css">
 </head>
 
 <body>
 
-    <header class="">
-        <a href="./home.html" class="back-link"><i class="fa-solid fa-chevron-right"></i></a>
-        <h1 class=" font-bold text-2xl">تفاصيل المريض</h1>
+    <header>
+        <a href="./doctor-queue.html" class="back-link" title="رجوع">
+            <i class="fa-solid fa-chevron-right"></i>
+        </a>
+        <h1 class="text-xl font-bold">تفاصيل المريض</h1>
     </header>
 
     <main>
+        <!-- هنا سيتم بناء كروت بيانات المريض عن طريق JS -->
         <div id="patientDetails"></div>
-        <div class="buttons-container w-full md:w-1/2">
-            <button id="startBtn" class="btn text-white bg-green-600 hover:bg-green-700">بدء الكشف</button>
-            <button id="endBtn" class="btn hidden border border-red-600 text-red-600 hover:bg-red-600 hover:text-white">انهاء الكشف</button>
+
+        <!-- أزرار الإجراءات -->
+        <div class="buttons-container">
+            <button id="startBtn">
+                <i class="fa-solid fa-play"></i>
+                بدء الكشف
+            </button>
+            <button id="endBtn" >
+                <i class="fa-solid fa-check"></i>
+                إنهاء الكشف
+            </button>
+            <button id="cancelAppointmentBtn">
+                <i class="fa-solid fa-xmark"></i>
+                إلغاء الكشف
+            </button>
+            
         </div>
     </main>
-    <script type="module" src="../JS/Done/getPatientDetails.js"></script>
+
+    <script type="module" src="../JS/getPatientDetails.js"></script>
     <script src="../JS/initialSetup.js"></script>
     <script src="../JS/patientDetails.js"></script>
 </body>
