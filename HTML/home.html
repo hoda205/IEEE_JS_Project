@@ -11,49 +11,50 @@
     <div class="card">
         
         <div class="doctor-info">
-            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=100&h=100&fit=crop" alt="د. أحمد محمد" class="doctor-img">
+            <img id="doctorImg" src="../assets//users/" alt="صورة الدكتور" class="doctor-img">
             <div class="doctor-details">
-                <h2>د. أحمد محمد</h2>
-                <p class="specialty">استشاري أمراض الباطنة</p>
-                <p class="rating">⭐ 4.9 (100 مستخدم)</p>
+                <h2 id="doctorName">---</h2>
+                <p id="doctorSpecialty" class="specialty">---</p>
+                <p class="rating"><i class="fa-solid fa-star"></i> 4.9 (100 مستخدم)</p>
             </div>
         </div>
 
         <div class="clinic-info">
             <div class="clinic-loc">
-                <span class="loc-icon">📍</span>
+                <span class="loc-icon"><i class="fa-solid fa-location-dot"></i></span>
                 <div>
-                    <h3>عيادة النخيل</h3>
-                    <p>المهندسين - شارع جامعة الدول</p>
-                    <a href="#" class="map-link">عرض على الخريطة</a>
+                    <h3 id="clinicLocation">جاري التحميل...</h3>
+                    <p id="clinicAddress">المهندسين - شارع جامعة الدول</p>
+                    <!-- <a href="#" class="map-link">عرض على الخريطة</a> -->
                 </div>
             </div>
             <div class="status">
                 <span>حالة الحجز</span>
-                <strong class="confirmed">مؤكد</strong>
+                <strong id="bookingStatus" class="confirmed">مؤكد</strong>
             </div>
         </div>
 
         <div class="stats-grid">
             <div class="stat-box">
                 <span>سعر الكشف</span>
-                <strong>300</strong>
+                <strong id="consultationFee">---</strong>
             </div>
             <div class="stat-box">
-                <span>عدد المستفيدين</span>
-                <strong>12</strong>
+                <span>عدد المنتظرين</span>
+                <strong id="waitingCount">0</strong>
             </div>
             <div class="stat-box">
                 <span>الموعد</span>
-                <p>الثلاثاء، 14 مايو 2026</p>
-                <strong>09:30 AM</strong>
+                <!-- <p id="appointmentDate">---</p> -->
+                <strong id="appointmentTime">---</strong>
             </div>
         </div>
 
-        <button id="bookBtn" class="book-btn">إحجز الآن</button>
+        <button  id="bookBtn" class="book-btn">إحجز الآن</button>
 
     </div>
 
-    <script src="../JS/home.js"></script>
+    <script type="module" src="../JS/Pages/home.js"></script>
+    <script src="../JS/initialSetup.js"></script>
 </body>
 </html>
