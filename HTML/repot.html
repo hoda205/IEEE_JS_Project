@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Reports Dashboard</title>
+    <link rel="stylesheet" href="../CSS/repot.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="main-container">
+        <div class="top-bar">
+            <div class="title-box">
+                <span class="badge">14</span>
+                <h2>Reports (Doctor only)</h2>
+            </div>
+            <div class="filters-box">
+                <div class="date-picker">01/05/2024 إلي</div>
+                <div class="date-picker">14/05/2024 إلي</div>
+                <button class="export-btn">تصدير</button>
+            </div>
+        </div>
+
+        <div class="cards-grid-top">
+            <div class="card">
+                <span class="card-label">إجمالي المرضى</span>
+                <span class="card-num">120</span>
+            </div>
+            <div class="card">
+                <span class="card-label">إجمالي الإيرادات</span>
+                <span class="card-num">36,000</span>
+                <span class="card-sub">جنيه</span>
+            </div>
+            <div class="card">
+                <span class="card-label">متوسط وقت الانتظار</span>
+                <span class="card-num">28</span>
+                <span class="card-sub">دقيقة</span>
+            </div>
+            <div class="card">
+                <span class="card-label">No Show</span>
+                <span class="card-num red">7</span>
+                <span class="card-sub red">(5.8%)</span>
+            </div>
+        </div>
+
+        <div class="charts-section">
+            <div class="chart-box">
+                <h3>عدد المرضى لكل يوم</h3>
+                <canvas id="myBarChart"></canvas>
+            </div>
+            <div class="chart-box">
+                <h3>توزيع الحالات</h3>
+                <div class="doughnut-wrapper">
+                    <canvas id="myDoughnutChart"></canvas>
+                    <div class="doughnut-legend">
+                        <div class="legend-item"><span class="dot blue"></span> مكتمل 76%</div>
+                        <div class="legend-item"><span class="dot green"></span> في الانتظار 17%</div>
+                        <div class="legend-item"><span class="dot red-dot"></span> لم يحضر 7%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cards-grid-bottom">
+            <div class="card">
+                <span class="card-label">متوسط مدة الكشف</span>
+                <span class="card-num">18</span>
+                <span class="card-sub">دقيقة</span>
+            </div>
+            <div class="card">
+                <span class="card-label">أكثر الأيام ازدحاماً</span>
+                <span class="card-num">الأحد</span>
+                <span class="card-sub">28 مريض</span>
+            </div>
+            <div class="card">
+                <span class="card-label">إجمالي No Show</span>
+                <span class="card-num">7</span>
+                <span class="card-sub">مرضى</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="../JS/repot.js"></script>
+</body>
+</html>
