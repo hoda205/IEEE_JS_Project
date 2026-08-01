@@ -1,0 +1,446 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "full_name": "هدي ",
+      "phone_number": "01098706769",
+      "password": "123",
+      "role": "patient",
+      "date_of_birth": "2005-11-11",
+      "profile_image": "images.jfif"
+    },
+    {
+      "id": "2",
+      "full_name": "د. حسام علي",
+      "phone_number": "01100000000",
+      "password": "doc_pass_456",
+      "role": "doctor",
+      "date_of_birth": null,
+      "profile_image": "default.png"
+    },
+    {
+      "id": "3",
+      "full_name": "سارة أيمن",
+      "phone_number": "01200000000",
+      "password": "sec_pass_789",
+      "role": "secretary",
+      "date_of_birth": null,
+      "profile_image": "default.png"
+    },
+    {
+      "full_name": "هدي مجدي",
+      "phone_number": "01098706761",
+      "password": "1234",
+      "role": "patient",
+      "date_of_birth": "11-11-2005",
+      "profile_image": "default.png",
+      "id": "AAV0IUdyp3Q"
+    },
+    {
+      "full_name": "هدي مجدي عبد الوهاب",
+      "phone_number": "010987067611",
+      "password": "123",
+      "role": "patient",
+      "date_of_birth": "11-11-2005",
+      "profile_image": "1785583468586-wallpaperflare.com_wallpaper (8).jpg",
+      "id": "Dc4MqLnfr30"
+    }
+  ],
+  "patient_profiles": [
+    {
+      "id": "1",
+      "userId": "1",
+      "gender": "ذكر",
+      "blood_type": "A+",
+      "marital_status": "أعزب",
+      "address": "القاهرة، مدينة نصر، شارع الطيران",
+      "allergies": [
+        "البنسلين",
+        "الفول/المكسرات"
+      ],
+      "chronic_diseases": [
+        "الضغط مرتفع"
+      ]
+    },
+    {
+      "userId": "YWPuGn8buR8",
+      "gender": "غير محدد",
+      "blood_type": "A+",
+      "marital_status": "غير محدد",
+      "address": "",
+      "allergies": [],
+      "chronic_diseases": [],
+      "id": "5plOWzuks6Y"
+    },
+    {
+      "userId": "o3IilAV2xVo",
+      "gender": "غير محدد",
+      "blood_type": "A+",
+      "marital_status": "غير محدد",
+      "address": "",
+      "allergies": [],
+      "chronic_diseases": [],
+      "id": "Sl7o3JHOQW8"
+    },
+    {
+      "userId": "VEgW_jp5al4",
+      "gender": "غير محدد",
+      "blood_type": "A+",
+      "marital_status": "غير محدد",
+      "address": "",
+      "allergies": [],
+      "chronic_diseases": [],
+      "id": "6lgSJ_QYr6Q"
+    },
+    {
+      "userId": "Dc4MqLnfr30",
+      "gender": "غير محدد",
+      "blood_type": "A+",
+      "marital_status": "غير محدد",
+      "address": "",
+      "allergies": [],
+      "chronic_diseases": [],
+      "id": "8AZrwTwglqQ"
+    }
+  ],
+  "doctor_profiles": [
+    {
+      "id": "1",
+      "userId": "2",
+      "specialty": "أخصائي تغذية علاجية",
+      "consultation_fee": 350,
+      "no_show_penalty": 100,
+      "is_booking_open": false,
+      "cancellation_policy": "يمكن الإلغاء قبل الموعد  بدون غرامة."
+    }
+  ],
+  "clinic_locations": [
+    {
+      "id": "101",
+      "doctorId": "1",
+      "location_name": "فرع مدينة نصر",
+      "address": "شارع الطيران - برج الأطباء - الدور 3"
+    },
+    {
+      "id": "102",
+      "doctorId": "1",
+      "location_name": "فرع المهندسين",
+      "address": "شارع جامعة الدول - عمائر النصر"
+    },
+    {
+      "id": "103",
+      "doctorId": "1",
+      "location_name": "فرع المعادي",
+      "address": "شارع 9 - المعادي"
+    }
+  ],
+  "schedules": [
+    {
+      "id": "1",
+      "doctorId": "1",
+      "clinicLocationId": "101",
+      "day_of_week": "Saturday",
+      "start_time": "00:00",
+      "end_time": "23:55",
+      "max_patients": 20,
+      "is_active": true
+    },
+    {
+      "id": "2",
+      "doctorId": "1",
+      "clinicLocationId": "102",
+      "day_of_week": "Tuesday",
+      "start_time": "17:00",
+      "end_time": "22:00",
+      "max_patients": 25,
+      "is_active": true
+    },
+    {
+      "id": "3",
+      "doctorId": "1",
+      "clinicLocationId": "103",
+      "day_of_week": "Monday",
+      "start_time": "00:00",
+      "end_time": "21:00",
+      "max_patients": 30,
+      "is_active": true
+    }
+  ],
+  "appointments": [
+    {
+      "id": "app1001",
+      "patientId": "10",
+      "doctorId": "1",
+      "clinicLocationId": "103",
+      "scheduleId": "3",
+      "booking_date": "2026-07-28",
+      "queue_number": 1,
+      "status": "completed",
+      "consultation_fee": 300,
+      "no_show_penalty": 100,
+      "created_at": "2026-07-28T09:00:00Z"
+    },
+    {
+      "id": "app1002",
+      "patientId": "11",
+      "doctorId": "1",
+      "clinicLocationId": "103",
+      "scheduleId": "3",
+      "booking_date": "2026-07-28",
+      "queue_number": 2,
+      "status": "completed",
+      "consultation_fee": 300,
+      "no_show_penalty": 100,
+      "created_at": "2026-07-28T09:05:00Z"
+    },
+    {
+      "id": "app1003",
+      "patientId": "12",
+      "doctorId": "1",
+      "clinicLocationId": "103",
+      "scheduleId": "3",
+      "booking_date": "2026-07-28",
+      "queue_number": 3,
+      "status": "called",
+      "consultation_fee": 300,
+      "no_show_penalty": 100,
+      "created_at": "2026-07-28T09:10:00Z"
+    },
+    {
+      "id": "app1004",
+      "patientId": "13",
+      "doctorId": "1",
+      "clinicLocationId": "103",
+      "scheduleId": "3",
+      "booking_date": "2026-07-28",
+      "queue_number": 4,
+      "status": "in_consultation",
+      "consultation_fee": 300,
+      "no_show_penalty": 100,
+      "created_at": "2026-07-28T09:15:00Z"
+    },
+    {
+      "id": "app1005",
+      "patientId": "14",
+      "doctorId": "1",
+      "clinicLocationId": "103",
+      "scheduleId": "3",
+      "booking_date": "2026-07-28",
+      "queue_number": 5,
+      "status": "waiting",
+      "consultation_fee": 300,
+      "no_show_penalty": 100,
+      "created_at": "2026-07-28T09:20:00Z"
+    },
+    {
+      "id": "feSNlUvDc4Y",
+      "patientId": "1",
+      "doctorId": "1",
+      "clinicLocationId": "103",
+      "scheduleId": "3",
+      "booking_date": "2026-07-28",
+      "queue_number": 6,
+      "status": "cancelled",
+      "consultation_fee": 300,
+      "no_show_penalty": 100,
+      "created_at": "2026-07-28T09:25:00Z"
+    },
+    {
+      "id": "app1007",
+      "patientId": "15",
+      "doctorId": "1",
+      "clinicLocationId": "103",
+      "scheduleId": "3",
+      "booking_date": "2026-07-28",
+      "queue_number": 7,
+      "status": "waiting",
+      "consultation_fee": 300,
+      "no_show_penalty": 100,
+      "created_at": "2026-07-28T09:30:00Z"
+    },
+    {
+      "patientId": "1",
+      "doctorId": "1",
+      "scheduleId": "2",
+      "clinicLocationId": "102",
+      "booking_date": "2026-07-28",
+      "queue_number": 8,
+      "status": "cancelled",
+      "consultation_fee": 350,
+      "no_show_penalty": 100,
+      "created_at": "2026-07-28T17:19:51.765Z",
+      "id": "6UKNnMYI_FM"
+    },
+    {
+      "patientId": "1",
+      "doctorId": "1",
+      "scheduleId": "2",
+      "clinicLocationId": "102",
+      "booking_date": "2026-07-28",
+      "queue_number": 9,
+      "status": "cancelled",
+      "consultation_fee": 350,
+      "no_show_penalty": 100,
+      "created_at": "2026-07-28T17:25:27.445Z",
+      "id": "cmwbMDt_rig"
+    },
+    {
+      "patientId": "1",
+      "doctorId": "1",
+      "scheduleId": "2",
+      "clinicLocationId": "102",
+      "booking_date": "2026-07-28",
+      "queue_number": 10,
+      "status": "cancelled",
+      "consultation_fee": 350,
+      "no_show_penalty": 100,
+      "created_at": "2026-07-28T17:26:09.215Z",
+      "id": "nEhl9wyPbjs"
+    },
+    {
+      "patientId": "1",
+      "doctorId": "1",
+      "scheduleId": "2",
+      "clinicLocationId": "102",
+      "booking_date": "2026-07-28",
+      "queue_number": 11,
+      "status": "cancelled",
+      "consultation_fee": 350,
+      "no_show_penalty": 100,
+      "created_at": "2026-07-28T17:27:33.549Z",
+      "id": "qUs9qmzMxWA"
+    },
+    {
+      "patientId": "1",
+      "doctorId": "1",
+      "scheduleId": "2",
+      "clinicLocationId": "102",
+      "booking_date": "2026-07-28",
+      "queue_number": 12,
+      "status": "cancelled",
+      "consultation_fee": 350,
+      "no_show_penalty": 100,
+      "created_at": "2026-07-28T17:40:50.866Z",
+      "id": "ze7O-nRRHUg"
+    },
+    {
+      "patientId": "Dc4MqLnfr30",
+      "doctorId": "1",
+      "scheduleId": "1",
+      "clinicLocationId": "101",
+      "booking_date": "2026-08-01",
+      "queue_number": 1,
+      "status": "cancelled",
+      "consultation_fee": 350,
+      "no_show_penalty": 100,
+      "created_at": "2026-08-01T11:40:55.053Z",
+      "id": "l6evtCsVzKk"
+    },
+    {
+      "patientId": "Dc4MqLnfr30",
+      "doctorId": "1",
+      "scheduleId": "1",
+      "clinicLocationId": "101",
+      "booking_date": "2026-08-01",
+      "queue_number": 2,
+      "status": "waiting",
+      "consultation_fee": 350,
+      "no_show_penalty": 100,
+      "created_at": "2026-08-01T11:44:17.836Z",
+      "id": "PshDH-9O898"
+    }
+  ],
+  "medical_records": [
+    {
+      "id": "501",
+      "appointmentId": "1001",
+      "patientId": "1",
+      "doctorId": "2",
+      "visit_date": "2026-06-10",
+      "diagnosis": "ارتفاع خفيف في ضغط الدم وحساسية موسمية",
+      "doctor_notes": "الالتزام بتقليل الملح في الطعام ومتابعة الضغط يومياً.",
+      "prescriptions": [
+        {
+          "medicine": "Concor 5mg",
+          "dosage": "قرص واحد صباحاً",
+          "duration": "لمدة شهر"
+        },
+        {
+          "medicine": "Cetzine 10mg",
+          "dosage": "قرص قبل النوم",
+          "duration": "عند اللزوم"
+        }
+      ],
+      "diet_plan": {
+        "title": "نظام غذائي لمرضى الضغط",
+        "details": "التركيز على الخضروات الورقية، الفواكه الطازجة، وتقليل الصوديوم."
+      },
+      "requested_lab_tests": [
+        "تحليل وظائف كلى",
+        "صورة دم كاملة CBC"
+      ],
+      "created_at": "2026-06-10T11:30:00Z"
+    },
+    {
+      "appointmentId": "1001",
+      "patientId": "1",
+      "doctorId": "2",
+      "visit_date": "2026-07-27",
+      "diagnosis": "ارتفاع ضغط بسيط",
+      "doctor_notes": "تقليل الملح والمتابعة",
+      "prescriptions": [
+        {
+          "medicine": "Concor 5mg",
+          "dosage": "قرص صباحاً",
+          "duration": "شهر"
+        },
+        {
+          "medicine": "Cetzine 10mg",
+          "dosage": "قبل النوم",
+          "duration": "عند اللزوم"
+        }
+      ],
+      "diet_plan": {
+        "title": "نظام غذائي لمرضى الضغط",
+        "details": "تقليل الصوديوم وزيادة الخضروات"
+      },
+      "requested_lab_tests": [
+        "CBC",
+        "وظائف كلى"
+      ],
+      "created_at": "2026-07-27T16:43:08.556Z",
+      "id": "zpoPRyPsK04"
+    },
+    {
+      "appointmentId": "1001",
+      "patientId": "1",
+      "doctorId": "2",
+      "visit_date": "2026-07-27",
+      "diagnosis": "ارتفاع ضغط بسيط",
+      "doctor_notes": "تقليل الملح والمتابعة",
+      "prescriptions": [
+        {
+          "medicine": "Concor 5mg",
+          "dosage": "قرص صباحاً",
+          "duration": "شهر"
+        },
+        {
+          "medicine": "Cetzine 10mg",
+          "dosage": "قبل النوم",
+          "duration": "عند اللزوم"
+        }
+      ],
+      "diet_plan": {
+        "title": "نظام غذائي لمرضى الضغط",
+        "details": "تقليل الصوديوم وزيادة الخضروات"
+      },
+      "requested_lab_tests": [
+        "CBC",
+        "وظائف كلى"
+      ],
+      "created_at": "2026-07-27T16:43:08.858Z",
+      "id": "JeQS_3JVNwM"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
