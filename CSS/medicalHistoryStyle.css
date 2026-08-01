@@ -1,108 +1,208 @@
-*{
-    margin: 10px;
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+
+:root {
+    --dark-navy: #014479;
+    --vivid-blue: #1378CA;
+    --pastel-blue: #BAE0FF;
+    --off-white: #EAF2FA;
+    --main-bg-color: #F8FAFC;
+    --card-bg: #FFFFFF;
+    --gray: #818390;
+    --border-color: #E2E8F0;
+    --text-color: #1E293B;
+}
+
+/* Re-setting default elements */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
     padding: 0;
+}
+
+body {
     background-color: var(--main-bg-color);
     font-family: "Cairo", sans-serif;
-    font-weight: bold;
+    color: var(--text-color);
+    direction: rtl;
+    line-height: 1.6;
 }
-:root{
-    --dark-navy:#014479;
-    --vivid-blue:#1378CA;
-    --pastel-blue:#BAE0FF;
-    --off-white:#EAF2FA;
-    --main-bg-color:#FEFEFE;
-    --gray:#818390
-}
-main{
-    padding-top: 2%;
+
+main {
+    padding: 30px 15px;
     width: 95%;
-    margin:auto;
-}
-@media (min-width: 576px) {
-    main{
-        width:90%;
-    }
-}
-
-@media (min-width: 768px) { 
-    main{
-        width:85%
-    }
-}
-
-@media (min-width: 992px) { 
-    main{
-        width:60%
-    }
-}
-
-h1{
-    color: var(--dark-navy);
-    font-size: 2rem;
-}
-h3{
-    color: var(--vivid-blue);
-    font-size: 1.2rem;
-}
-h4{
-    color: var(--vivid-blue);
-}
-
-.card,#medical-history,#patient-details,.visit-card{
-    border-radius: 10px;
-    box-shadow: 0 0 7px rgba(0, 0, 0, 0.17);
-    padding: 1%;
-    width: 98%;
-}
-.card{
+    max-width: 1100px;
+    margin: auto;
     display: flex;
     flex-direction: column;
-    gap: 1%;
+    gap: 20px;
 }
-#name,#age{
+
+/* Typography */
+h1 {
+    color: var(--dark-navy);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+h3 {
+    color: var(--vivid-blue);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+h4 {
+    color: var(--dark-navy);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.header{
     display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.17);
+    color: var(--dark-navy);
 }
-.visit-header{
+.header .back-link{
+    font-size: 1.7rem;
+    color: var(--vivid-blue);
+}
+.header h1{
+    font-size: 1.5rem;
+}
+
+/* Cards & Containers */
+.card, 
+#patient-details, 
+#medical-history, 
+.visit-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    padding: 24px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Header Card */
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Patient Details Section */
+#patient-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: var(--card-bg);
+}
+
+.patient-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--off-white);
+    padding: 12px 16px;
+    border-radius: 8px;
+}
+
+.info-item span {
+    color: var(--gray);
+    font-weight: 400;
+}
+
+/* Medical History & Visit Cards */
+#medical-history {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: none;
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.visit-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.visit-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-.visit-card {
-    padding: 2%;
-}
-.visit-details{
-    border-top:1px solid  rgba(0, 0, 0, 0.17);
-}
-table {
-    width: 98%;
-    border-collapse: collapse;
-    padding: 2%;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--off-white);
 }
 
-th{
-    color:var(--vivid-blue);
-    border: 1px solid var(--vivid-blue);
-    border-radius: 6px;
-    padding: 2%;
+.visit-details {
+    padding-top: 12px;
 }
-tr td{
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+th {
+    background-color: var(--off-white);
+    color: var(--dark-navy);
+    font-weight: 700;
     text-align: center;
-    border: 1px solid #000000;
-    border-radius: 6px;
-    padding: 2%;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
 }
-button{
+
+td {
+    text-align: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* Buttons */
+button, .btn {
     background-color: var(--vivid-blue);
-    color: var(--off-white);
-    padding: 1%;
+    color: #FFFFFF;
+    padding: 10px 20px;
     border: none;
-    border-radius: 6px;
-    height: 44px;
-    transition: 0.4s;
+    border-radius: 8px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
-button:hover{
+
+button:hover {
     background-color: var(--dark-navy);
-    opacity: 0.9;
-    padding: 1%;
-    border: 1px solid var(--dark-navy);
+}
+
+button:active {
+    transform: scale(0.98);
 }

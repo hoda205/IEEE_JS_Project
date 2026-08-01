@@ -1,9 +1,10 @@
-import displayPatientData from "./displayPatientData.js";
+    import displayPatientData from "./displayPatientData.js";
 import { checkAuth } from "../../checkAuth.js";
 const patient = checkAuth();
 
 if (patient) {
-    displayPatientData(patient);
+    // console.log(patient);
+    // displayPatientData(patient);
     loadMedicalHistory();
 } else {
     window.location.replace("login.html");
@@ -126,6 +127,7 @@ async function getPatientMedicalHistory(patientUserId) {
         );
         const records = await recordsRes.json();
         // فلترة سجلات المريض
+        console.log(records);
         const patientRecords = records
             .filter(record => record.patientId === patientUserId)
             .sort((a, b) => new Date(b.visit_date) - new Date(a.visit_date));
