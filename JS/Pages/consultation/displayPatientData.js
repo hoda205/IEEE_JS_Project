@@ -1,71 +1,100 @@
-function getPatientId() {
-    const params = new URLSearchParams(window.location.search);
-    return params.get("id");
+function getAppointmentId() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("appointmentId");
 }
 
 function calculateAge(dateOfBirth) {
-    if (!dateOfBirth) return "غير محدد"; // حماية في حالة عدم وجود تاريخ ميلاد
+  if (!dateOfBirth) return "غير محدد";
 
-    const birthDate = new Date(dateOfBirth);
-    const today = new Date();
+  const birthDate = new Date(dateOfBirth);
+  const today = new Date();
 
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const monthDiff = today.getMonth() - birthDate.getMonth();
+  let age = today.getFullYear() - birthDate.getFullYear();
 
-    if (
-        monthDiff < 0 ||
-        (monthDiff === 0 && today.getDate() < birthDate.getDate())
-    ) {
-        age--;
-    }
+  const monthDiff = today.getMonth() - birthDate.getMonth();
 
-    return age;
+  if (
+    monthDiff < 0 ||
+    (monthDiff === 0 && today.getDate() < birthDate.getDate())
+  ) {
+    age--;
+  }
+
+  return age;
 }
 
-// دالة لتجهيز تاريخ اليوم بتنسيق عربي مناسب (مثال: 2026/8/1)
 function getTodayDate() {
-    const today = new Date();
-    return today.toLocaleDateString("ar-EG", {
-        year: "numeric",
-        month: "numeric",
-        day: "numeric"
-    });
+  return new Date().toLocaleDateString("ar-EG", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
 }
 
 async function displayPatientData() {
-    const patientId = getPatientId();
+  const appointmentId = getAppointmentId();
 
-    // جلب عناصر الـ DOM بالـ ID
-    const nameContainer = document.getElementById("name");
-    const ageContainer = document.getElementById("age");
-    const dateContainer = document.getElementById("date");
+  const nameContainer = document.getElementById("patient-name");
+  const ageContainer = document.getElementById("patient-age");
+  const dateContainer = document.getElementById("visit-date");
 
-    if (!patientId) {
-        console.error("لم يتم العثور على ID المريض في الرابط");
-        return;
+  if (!appointmentId) {
+    console.error("لم يتم العثور على appointmentId في الرابط");
+    return;
+  }
+
+  try {
+    // جلب كل الحجوزات
+    const appointmentRes = await fetch("http://localhost:3000/appointments");
+
+    if (!appointmentRes.ok) {
+      throw new Error("فشل جلب الحجوزات");
     }
 
-    try {
-        const response = await fetch("http://localhost:3000/users");
+    const appointments = await appointmentRes.json();
 
-        if (!response.ok) {
-            throw new Error("فشل الاتصال بالسيرفر");
-        }
+    // فلترة الحجز بالـ id
+    const appointment = appointments.find(
+      (app) => String(app.id) === String(appointmentId),
+    );
 
-        const users = await response.json();
-        const patient = users.find(user => String(user.id) === patientId);
-
-        if (patient) {
-            // عرض البيانات المجلوبة
-            if (nameContainer) nameContainer.innerHTML += ` <span>${patient.full_name}</span>`;
-            if (ageContainer) ageContainer.innerHTML += ` <span>${calculateAge(patient.date_of_birth)} سنة</span>`;
-            if (dateContainer) dateContainer.innerHTML += ` <span>${getTodayDate()}</span>`;
-        } else {
-            console.warn("المريض غير موجود بقاعدة البيانات");
-        }
-    } catch (error) {
-        console.error("حدث خطأ أثناء جلب بيانات المريض:", error);
+    if (!appointment) {
+      throw new Error("الحجز غير موجود");
     }
+
+    // جلب كل المستخدمين
+    const usersRes = await fetch("http://localhost:3000/users");
+
+    if (!usersRes.ok) {
+      throw new Error("فشل جلب المستخدمين");
+    }
+
+    const users = await usersRes.json();
+
+    // فلترة المريض
+    const patient = users.find(
+      (user) => String(user.id) === String(appointment.patientId),
+    );
+
+    if (!patient) {
+      throw new Error("المريض غير موجود");
+    }
+
+    // عرض البيانات
+    if (nameContainer) {
+      nameContainer.textContent = patient.full_name;
+    }
+
+    if (ageContainer) {
+      ageContainer.textContent = `${calculateAge(patient.date_of_birth)} سنة`;
+    }
+
+    if (dateContainer) {
+      dateContainer.textContent = getTodayDate();
+    }
+  } catch (error) {
+    console.error("حدث خطأ أثناء جلب بيانات المريض:", error);
+  }
 }
 
 displayPatientData();

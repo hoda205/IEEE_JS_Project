@@ -1,71 +1,116 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content>
-        <meta name="keywords" content>
-        <link rel="stylesheet" href="../CSS/consultationStyle.css">
-        <link rel="shortcut icon" href="../assets/prescription.png"
-            type="image/x-icon">
-        <title>الروشتة</title>
-    </head>
-    <body>
-        <main>
-            <div id="page">
-                <h1>الروشتة</h1>
-                <div id="patient-details">
-                    <div>
-                        <h3>بيانات المريض :</h3>
-                    </div>
-                    <div id="name">
-                        <h4>الاسم:</h4>
-                    </div>
-                    <div id="age">
-                        <h4>العمر:</h4>
+<html lang="ar" dir="rtl">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الروشتة الطبية</title>
+    <link rel="stylesheet" href="../CSS/consultationStyle.css">
+    <link rel="shortcut icon" href="../assets/prescription.png" type="image/x-icon">
+</head>
+
+<body>
+    <main>
+        <div id="page">
+            <!-- Header -->
+            <header class="app-header">
+                <h1>الروشتة الطبية</h1>
+                <span class="prescription-badge">عيادة متخصصة</span>
+            </header>
+
+            <!-- Patient Info Card -->
+            <section class="card">
+                <h2 class="card-title">بيانات المريض</h2>
+                <div class="patient-grid">
+                    <div class="info-item">
+                        <label>اسم المريض</label>
+                        <span id="patient-name"> </span>
                     </div>
-                    <div id="date">
-                        <h4>تاريخ الزيارة :</h4>
+                    <div class="info-item">
+                        <label>العمر</label>
+                        <span id="patient-age"> </span>
+                    </div>
+                    <div class="info-item">
+                        <label>تاريخ الزيارة</label>
+                        <span id="visit-date"></span>
                     </div>
                 </div>
-                <form action method="get">
-                    <label for="diagnosis">التشخيص</label>
-                    <textarea name="diagnosis" id="diagnosis"
-                        required></textarea>
-                    <label for="notes">ملاحظات</label>
-                    <textarea name="notes" id="notes" required></textarea>
-                    <label for="consultation">الوصفة/الخطة العلاجية</label>
-                    <table id="medicine">
-                        <thead>
-                            <tr>
-                                <th>رقم</th>
-                                <th>الدواء</th>
-                                <th>الجرعة</th>
-                                <th>المدة</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+            </section>
 
-                        </tbody>
-                    </table>
-                    <button type="button" id="add">اضافة دواء</button>
-                    <button type="button" id="delete">حذف الدواء</button>
-                    <button type="submit" id="firstBtn">حفظ و انهاء
-                        الروشتة</button>
-                    <button type="button" class="download" id="secondBtn"
-                        disabled>طباعة الروشتة</button>
-                </form>
-            </div>
-        </main>
-        <script src="../JS/Pages/consultation/displayPatientData.js"
-            type="module"></script>
-        <script src="../JS/Pages/consultation/addMedicine.js"></script>
-        <script src="../JS/Pages/consultation/deleteMedicine.js"></script>
-        <script src="../JS/Pages/consultation/printConsultation.js"
-            type="module"></script>
-        <script type="module"
-            src="../JS/Pages/consultation/handleSaveConsultation.js"></script>
-        <script src="../JS/initialSetup.js"></script>
-    </body>
+            <!-- Form Section -->
+            <form action method="get" class="card">
+                <div class="form-group">
+                    <label for="diagnosis">التشخيص الطبي</label>
+                    <textarea name="diagnosis" id="diagnosis" placeholder="أدخل تفاصيل التشخيص..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">ملاحظات وتعليمات خاصة</label>
+                    <textarea name="notes" id="notes" placeholder="أدخل أي ملاحظات إضافية للمريض..."
+                        required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>الوصفة العلاجية</label>
+
+                    <!-- Modern Add Medicine Bar -->
+                    <div class="add-medicine-card no-print">
+                        <div class="inputs-row">
+                            <div class="input-field">
+                                <label for="med-name">اسم الدواء</label>
+                                <input type="text" id="med-name" placeholder="مثال: Augmentin 1g">
+                            </div>
+                            <div class="input-field">
+                                <label for="med-dose">الجرعة</label>
+                                <input type="text" id="med-dose" placeholder="مثال: قرص كل 12 ساعة">
+                            </div>
+                            <div class="input-field">
+                                <label for="med-duration">المدة</label>
+                                <input type="text" id="med-duration" placeholder="مثال: 7 أيام">
+                            </div>
+                        </div>
+                        <button type="button" id="add-btn" class="btn btn-primary" style="align-self: flex-start;">
+                            + إضافة الدواء للقائمة
+                        </button>
+                    </div>
+
+                    <!-- Table -->
+                    <div class="table-wrapper">
+                        <table id="medicine">
+                            <thead>
+                                <tr>
+                                    <th style="width: 8%;">#</th>
+                                    <th style="width: 38%;">الدواء</th>
+                                    <th style="width: 24%;">الجرعة</th>
+                                    <th style="width: 20%;">المدة</th>
+                                    <th class="no-print" style="width: 10%;">إجراء</th>
+                                </tr>
+                            </thead>
+                            <tbody id="medicine-list">
+                                <!-- Dynamic rows via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Footer Action Buttons -->
+                <div class="form-actions no-print">
+                    <button type="button" id="saveBtn" class="btn btn-submit"> حفظ</button>
+                    <button type="button" id="printBtn" class="btn btn-print">طباعة</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="../JS/Pages/consultation/displayPatientData.js" type="module"></script>
+    <script type="module" src="../JS/Pages/consultation/addMedicine.js"></script>
+    <script type="module" src="../JS/Pages/consultation/deleteMedicine.js"></script>
+    <script src="../JS/Pages/consultation/printConsultation.js" type="module"></script>
+    <script src="../JS/Pages/consultation/consultationDraft.js" type="module"></script>
+    <script src="../JS/Pages/consultation/consultationForm.js" type="module"></script>
+    <script type="module" src="../JS/Pages/consultation/handleSaveConsultation.js"></script>
+
+    <script src="../JS/initialSetup.js"></script>
+</body>
+
 </html>
