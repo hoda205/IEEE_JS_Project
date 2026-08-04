@@ -130,6 +130,7 @@ containerFileInput.addEventListener("click", () => {
 });
 
 fileInput.addEventListener("change", () => {
+  console.log("hi form huda");
   const file = fileInput.files[0];
 
   if (file) {
