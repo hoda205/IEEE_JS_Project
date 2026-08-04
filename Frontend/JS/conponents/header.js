@@ -24,36 +24,38 @@ function addHeader() {
     "afterbegin",
     `
     <header class="patient-header">
-        <div class= "container" > 
-            <img src="../assets/logo.png" alt="logo" class="logo">
+        <div class="container"> 
+            <a href="./home.html">
+                <img src="../assets/logo.png" alt="شعار الموقع" class="logo">
+            </a>
 
             <div class="rightSide">
-                <i class="fa-regular fa-bell"></i>
+                <i class="fa-regular fa-bell" title="الإشعارات"></i>
                 
                 <div class="userInfo">
                     <div class="img-pages">
-                        <img id="userImg" src="${profileImgSrc}" alt="profile img">
+                        <img id="headerUserimg" src="${profileImgSrc}" alt="صورة الملف الشخصي">
 
                         <ul id="pages" style="display: none;">
-                            <li><a href="./home.html">الصفحة الرئيسية</a></li>
-                            <li><a href="./profile.html">الملف الشخصي</a></li>
-                            <li><a href="./medicalHistory.html">التاريخ الطبي</a></li>
-                            <li class="logout" id="logoutBtn">تسجيل خروج</li>
+                            <li><a href="./home.html"><i class="fa-solid fa-house ml-2"></i> الصفحة الرئيسية</a></li>
+                            <li><a href="./profile.html"><i class="fa-solid fa-user ml-2"></i> الملف الشخصي</a></li>
+                            <li><a href="./medicalHistory.html"><i class="fa-solid fa-notes-medical ml-2"></i> التاريخ الطبي</a></li>
+                            <li class="logout" id="logoutBtn"><i class="fa-solid fa-right-from-bracket ml-2"></i> تسجيل خروج</li>
                         </ul>
                     </div>
-                    <p id="userName">${firstNameTwo || "المريض"}</p>
+                    <p id="headerUserName">${firstNameTwo || "المريض"}</p>
                 </div>
             </div>
         </div>
     </header>`
-  );
+);
 
   // 3. ربط الـ Events بعد ما العناصر تترسم في الـ DOM
   initHeaderEvents();
 }
 
 function initHeaderEvents() {
-  const userImg = document.getElementById("userImg");
+  const userImg = document.getElementById("headerUserimg");
   const pages = document.getElementById("pages");
 
   if (!userImg || !pages) return;

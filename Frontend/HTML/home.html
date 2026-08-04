@@ -4,56 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تفاصيل الحجز</title>
-    <link rel="stylesheet" href="../CSS/home.css">
     
+    <!-- خط Cairo لتقديم مظهر عصري للأرقام والنصوص العربية -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- مكتبة FontAwesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="../CSS/home.css">
 </head>
 <body>
     
-    <div class="body">
-
+    <div class="main-wrapper">
         <div class="card">
             
+            <!-- معلومات الطبيب -->
             <div class="doctor-info">
-                <img id="doctorImg" src="../assets//users/" alt="صورة الدكتور" class="doctor-img">
+                <div class="img-wrapper">
+                    <img id="doctorImg" src="../assets/users/default.png" alt="صورة الدكتور" class="doctor-img">
+                </div>
                 <div class="doctor-details">
-                    <h2 id="doctorName">---</h2>
-                    <p id="doctorSpecialty" class="specialty">---</p>
-                    <p class="rating"><i class="fa-solid fa-star"></i> 4.9 (100 مستخدم)</p>
+                    <h2 id="doctorName">د. أحمد محمود</h2>
+                    <p id="doctorSpecialty" class="specialty">استشاري أمراض القلب والاوعية الدموية</p>
+                    <!-- <div class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        <span>4.9</span>
+                        <small>(100 تقييم)</small>
+                    </div> -->
                 </div>
             </div>
     
+            <!-- معلومات العيادة والحالة -->
             <div class="clinic-info">
                 <div class="clinic-loc">
-                    <span class="loc-icon"><i class="fa-solid fa-location-dot"></i></span>
+                    <div class="loc-icon-wrapper">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
                     <div>
-                        <h3 id="clinicLocation">جاري التحميل...</h3>
-                        <p id="clinicAddress">المهندسين - شارع جامعة الدول</p>
-                        <!-- <a href="#" class="map-link">عرض على الخريطة</a> -->
+                        <h3 id="clinicLocation">فرع المهندسين</h3>
+                        <p id="clinicAddress">شارع جامعة الدول العربية - القليوبية</p>
                     </div>
                 </div>
                 <div class="status">
-                    <span>حالة الحجز</span>
-                    <strong id="bookingStatus" class="confirmed">مؤكد</strong>
+                    <span class="status-label">حالة الحجز</span>
+                    <strong id="bookingStatus" class="status-badge confirmed">مؤكد</strong>
                 </div>
             </div>
     
+            <!-- الشبكة الإحصائية -->
             <div class="stats-grid">
                 <div class="stat-box">
-                    <span>سعر الكشف</span>
-                    <strong id="consultationFee">---</strong>
+                    <span class="stat-label">سعر الكشف</span>
+                    <strong id="consultationFee" class="stat-value">350 ج.م</strong>
                 </div>
                 <div class="stat-box">
-                    <span>عدد المنتظرين</span>
-                    <strong id="waitingCount">0</strong>
+                    <span class="stat-label">عدد المنتظرين</span>
+                    <strong id="waitingCount" class="stat-value highlight">3</strong>
                 </div>
                 <div class="stat-box">
-                    <span>الموعد</span>
-                    <!-- <p id="appointmentDate">---</p> -->
-                    <strong id="appointmentTime">---</strong>
+                    <span class="stat-label">موعد المكان</span>
+                    <strong id="appointmentTime" class="stat-value">07:30 م</strong>
                 </div>
             </div>
     
-            <button  id="bookBtn" class="book-btn">إحجز الآن</button>
+            <!-- زر الإجراء -->
+            <button id="bookBtn" class="book-btn">
+                <span>تأكيد الحجز الآن</span>
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
     
         </div>
     </div>

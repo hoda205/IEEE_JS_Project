@@ -43,7 +43,7 @@ export async function getPatientDetails(patientUserId) {
     if (!userInfo) {
       return null;
     }
-
+    // console.log(userInfo,profile, medicalHistory);
     return {
       userInfo: userInfo,
       profile: profile || {},

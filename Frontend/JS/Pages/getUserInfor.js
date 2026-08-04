@@ -1,15 +1,17 @@
 import { loadPatient } from "./getPatientDetails.js";
 import { updateUser } from "./updateUserData.js";
-async function loadUserInfo() {
+export async function loadUserInfo() {
   let userInfo = await loadPatient();
   let data = userInfo.userInfo;
 
   let fullname = document.getElementById("fullname");
+  let mainName = document.getElementById("mainName");
   let number = document.getElementById("number");
   let date = document.getElementById("date");
   let img = document.getElementById("profileImg");
 
   fullname.textContent = data.full_name;
+  mainName.textContent = data.full_name;
   number.textContent = data.phone_number;
   date.textContent = data.date_of_birth;
   // console.log(data.profile_image)
@@ -39,7 +41,7 @@ let fileInput = document.getElementById("fileInput");
 let previewImg = document.getElementById("preview");
 let upload = document.getElementById("upload");
 let deleteImage = document.getElementById("deleteImage");
-function showModal() {
+export function showModal() {
   modal.classList.add("modalApp");
 }
 
@@ -49,10 +51,28 @@ export function hiddenModal() {
   editInfoForm.style.display = "none";
   changPassForm.style.display = "none";
   document.getElementById("editUserImgForm").style.display = "none";
+  document.getElementById("editMedicalForm").style.display = "none";
 }
 hiddenModal();
+// showModal();
+export function enableSaveButton(inputs, button) {
+  button.disabled = true;
 
+  inputs.forEach((input) => {
+    input.addEventListener("input", () => {
+      button.disabled = false;
+    });
+
+    input.addEventListener("change", () => {
+      button.disabled = false;
+    });
+  });
+}
 async function editInfoFunc() {
+  
+  const infoInputs = [fullN, phoneN, dateB];
+  enableSaveButton(infoInputs, editInfoBtn);
+
   showModal();
 
   editInfoForm.style.display = "flex";
@@ -70,6 +90,16 @@ async function editInfoFunc() {
 }
 
 function changePassFunc() {
+  const passInputs = [
+    document.getElementById("currentPss"),
+    document.getElementById("newPass"),
+    document.getElementById("confirmPass"),
+  ];
+
+  const savePassBtn = document.getElementById("changePassBtn");
+
+  enableSaveButton(passInputs, savePassBtn);
+
   showModal();
 
   changPassForm.style.display = "flex";
@@ -108,7 +138,7 @@ fileInput.addEventListener("change", () => {
     previewImg.src = URL.createObjectURL(file);
   }
 });
-
+enableSaveButton([fileInput], upload);
 upload.addEventListener("click", async (e) => {
   e.preventDefault();
 
@@ -116,7 +146,7 @@ upload.addEventListener("click", async (e) => {
     document.getElementById("uploadImgError").textContent = "اختاري صورة أولاً";
     return;
   }
-
+  
   document.getElementById("uploadImgError").textContent = "";
 
   try {
@@ -124,19 +154,23 @@ upload.addEventListener("click", async (e) => {
     const userId = userInfo.userInfo.id;
     const formData = new FormData();
     formData.append("image", fileInput.files[0]);
-
+    
     const uploadResponse = await fetch("http://localhost:3001/upload", {
       method: "POST",
       body: formData,
     });
-
+    
     if (!uploadResponse.ok) {
       throw new Error("فشل رفع الصورة");
     }
-
+    
     const uploadData = await uploadResponse.json();
-
+    
     updateUser(userId, { profile_image: `${uploadData.image}` });
+    document.getElementById("headerUserimg").src = uploadData.image
+      ? `http://localhost:3001/uploads/${uploadData.image}`
+      : `http://localhost:3001/uploads/default.png`;
+
     document.getElementById("profileImg").src = uploadData.image
       ? `http://localhost:3001/uploads/${uploadData.image}`
       : `http://localhost:3001/uploads/default.png`;
@@ -160,16 +194,16 @@ deleteImage.addEventListener("click", async (e) => {
     const userId = user.id;
 
     // حذف الصورة من فولدر الباك
-    if (user.profile_image && user.profile_image !== "default.png") {
-      const response = await fetch(
-        `http://localhost:3001/upload/${user.profile_image}`,
-        {
-          method: "DELETE",
-        }
-      );
+    // if (user.profile_image && user.profile_image !== "default.png") {
+    //   const response = await fetch(
+    //     `http://localhost:3001/upload/${user.profile_image}`,
+    //     {
+    //       method: "DELETE",
+    //     },
+    //   );
 
-      console.log("Delete image:", await response.text());
-    }
+    //   console.log("Delete image:", await response.text());
+    // }
 
     // تحديث الداتا في json-server
     const isUpdate = await updateUser(userId, {
@@ -182,22 +216,25 @@ deleteImage.addEventListener("click", async (e) => {
     document.getElementById("profileImg").src =
       `http://localhost:3001/uploads/default.png?t=${Date.now()}`;
 
-    hiddenModal();
+      document.getElementById("headerUserimg").src = 
+      `http://localhost:3001/uploads/default.png?t=${Date.now()}`;
+      
 
+    hiddenModal();
   } catch (error) {
     console.log(error);
   }
 });
 
-function formatToInputDate(dateStr) {
-  if (!dateStr) return "";
+// function formatToInputDate(dateStr) {
+//   if (!dateStr) return "";
 
-  const parts = dateStr.split("-");
+//   const parts = dateStr.split("-");
 
-  if (parts.length === 3) {
-    const [day, month, year] = parts;
-    return `${year}-${month}-${day}`;
-  }
+//   if (parts.length === 3) {
+//     const [day, month, year] = parts;
+//     return `${year}-${month}-${day}`;
+//   }
 
-  return dateStr;
-}
+//   return dateStr;
+// }

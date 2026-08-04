@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
+
+:root {
+    --primary: #0284c7;
+    --primary-hover: #0369a1;
+    --primary-light: #f0f9ff;
+    --dark-navy: #0f172a;
+    --text-main: #334155;
+    --text-muted: #64748b;
+    --bg-body: #f8fafc;
+    --card-bg: #ffffff;
+    --border-color: #e2e8f0;
+    --danger: #ef4444;
+    --danger-hover: #dc2626;
+    --danger-light: #fef2f2;
+    --radius-lg: 16px;
+    --radius-md: 10px;
+    --radius-sm: 6px;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+    --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Cairo", sans-serif;
+}
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    line-height: 1.5;
+}
+header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.25rem 2rem;
+    background-color: var(--card-bg);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid var(--border-color);
+}
+
+header .back-link {
+    font-size: 1.25rem;
+    color: var(--vivid-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: #eff6ff;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+header .back-link:hover {
+    background-color: var(--vivid-blue);
+    color: white;
+}
+
+
+main {
+    width: 92%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px 0;
+}
+
+#page {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Header */
+.app-header {
+    background: var(--card-bg);
+    padding: 20px 28px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-right: 6px solid var(--primary);
+}
+
+.app-header h1 {
+    color: var(--dark-navy);
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
+.prescription-badge {
+    background: var(--primary-light);
+    color: var(--primary);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+/* Patient Details Card */
+.card {
+    background: var(--card-bg);
+    padding: 24px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+
+.card-title {
+    color: var(--dark-navy);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.patient-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.info-item {
+    background: var(--bg-body);
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.info-item label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 2px;
+}
+
+.info-item span {
+    font-weight: 700;
+    color: var(--dark-navy);
+    font-size: 1rem;
+}
+
+/* Form Controls */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--dark-navy);
+}
+
+textarea {
+    width: 100%;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 14px;
+    font-size: 0.95rem;
+    outline: none;
+    resize: vertical;
+    min-height: 80px;
+    transition: all 0.2s ease;
+    background: #fafafa;
+}
+
+textarea:focus {
+    background: #fff;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.12);
+}
+
+/* Modern Input Box for Medicine */
+.add-medicine-card {
+    background: var(--primary-light);
+    border: 1px dashed var(--primary);
+    padding: 20px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.inputs-row {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr 1.2fr;
+    gap: 12px;
+}
+
+@media (max-width: 640px) {
+    .inputs-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.input-field label {
+    font-size: 0.85rem;
+    color: var(--text-main);
+}
+
+.input-field input {
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    outline: none;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.input-field input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+/* Table Styling */
+.table-wrapper {
+    overflow-x: auto;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+#medicine {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    text-align: right;
+}
+
+#medicine th {
+    background: #f1f5f9;
+    color: var(--dark-navy);
+    padding: 14px 16px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border-color);
+}
+
+#medicine td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.95rem;
+}
+
+#medicine tbody tr:last-child td {
+    border-bottom: none;
+}
+
+#medicine tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Action Buttons */
+.btn {
+    padding: 10px 20px;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+.btn-delete-row {
+    background: transparent;
+    color: var(--danger);
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+}
+
+.btn-delete-row:hover {
+    background: var(--danger-light);
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.btn-submit {
+    flex: 2;
+    background: var(--primary);
+    color: white;
+    height: 48px;
+}
+
+.btn-print {
+    flex: 1;
+    background: var(--dark-navy);
+    color: white;
+    height: 48px;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Print Rules */
+@media print {
+    body { background: #fff; padding: 0; }
+    main { width: 100%; max-width: 100%; }
+    .card, .app-header { box-shadow: none; border: 1px solid #ddd; }
+    .add-medicine-card, .form-actions, .no-print { display: none !important; }
+    textarea { border: none; background: transparent; padding: 0; }
+}
+.fa-trash{
+    color: #ef4444;
+    cursor: pointer;
+}

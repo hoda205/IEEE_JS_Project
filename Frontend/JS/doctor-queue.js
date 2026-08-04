@@ -145,7 +145,7 @@ async function callPatient(patientId) {
 // دالة لتوليد الأزرار المناسبة حسب حالة المريض
 function renderActionButtons(appointment) {
   const { id, status } = appointment;
-
+  // console.log(appointment);
   let buttons = "";
 
   buttons += `
@@ -163,7 +163,7 @@ onclick="openPatientProfile('${appointment.patientId}')">
 
 <button 
 class="action-btn"
-onclick="openPrescription('${appointment.patientId}')">
+onclick="openPrescription('${id}')">
 
 <i class="fa-regular fa-file-lines"></i>
 
@@ -504,12 +504,14 @@ patientForm.addEventListener("submit", async (e) => {
     console.log(error);
   }
 });
-getAppointments();
 
 function openPatientProfile(patientId) {
   window.location.href = `patientDetails.html?id=${patientId}`;
 }
 
-function openPrescription(patientId) {
-  window.location.href = `consultation.html?id=${patientId}`;
+function openPrescription(appointmentId) {
+  window.location.href = `consultation.html?appointmentId=${appointmentId}`;
 }
+
+getAppointments();
+setInterval(getAppointments, 3000);

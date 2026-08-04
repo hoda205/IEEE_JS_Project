@@ -1,5 +1,6 @@
 import { checkAuth } from "../checkAuth.js";
 import {hiddenModal} from './getUserInfor.js'
+import {loadUserInfo} from "./getUserInfor.js"
 const user = checkAuth();
 
 console.log(user);
@@ -74,12 +75,17 @@ async function validation() {
   return isValid;
 }
 
+
+
 editInfoBtn.addEventListener("click", async (e) => {
+  let isEdit = false;
   e.preventDefault();
   const valid = await validation();
 
   if (!valid) return;
-
+  if(fullN.value !== user.full_name && phoneN.value !== user.phone_number && dateB.value !== user.date_of_birth){
+    isEdit
+  }
   if (user.phone_number !== phoneN.value) {
     const validNumber = await checkPhoneNumber(phoneN.value);
 
@@ -100,18 +106,22 @@ editInfoBtn.addEventListener("click", async (e) => {
   const updatedUser = await updateUser(user.id, updatedData);
 
   if (!updatedUser) return;
-  document.getElementById("editInfoForm").style.display = "none";
-  hiddenModal();
-  
 
-  // showSuccessPopup();
-  // showSuccessPopup(); 
-  // setTimeout(() => {
-  //   document.getElementById("successPopup").style.display = "none";
-  // }, 20000);
+  document.getElementById("headerUserName").textContent = fullN.value;
+
+  document.getElementById("editInfoForm").style.display = "none";
+  showSuccessPopup();
+  let id =  setTimeout(() => {
+    document.getElementById("successPopup").style.display = "none";
+  }, 20000);
+  hiddenModal();
+
+  loadUserInfo();
+
   
 });
-function showSuccessPopup() {
+
+export function showSuccessPopup() {
   const popup = document.querySelector(".success-popup");
   const range = document.querySelector(".range");
 
@@ -130,4 +140,4 @@ function showSuccessPopup() {
 
 // setTimeout(() => {
 //   document.getElementById("successPopup").style.display = "none";
-// }, 2000);
+// }, 2000); عاوزه احط علي الزرار disabled لكن لما ادخل حاجه في ال inputs يشيل ال disable
