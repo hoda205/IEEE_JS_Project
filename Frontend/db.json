@@ -2,12 +2,12 @@
   "users": [
     {
       "id": "1",
-      "full_name": "هدي ",
+      "full_name": "هدي مجدي",
       "phone_number": "01098706769",
-      "password": "123",
+      "password": "1234",
       "role": "patient",
-      "date_of_birth": "2005-11-11",
-      "profile_image": "images.jfif"
+      "date_of_birth": "2007-09-09",
+      "profile_image": "1785805261841-focas-without-bg.png"
     },
     {
       "id": "2",
@@ -44,6 +44,24 @@
       "date_of_birth": "11-11-2005",
       "profile_image": "1785587029173-WhatsApp Image 2026-07-22 at 5.46.34 PM(1).jpeg",
       "id": "Dc4MqLnfr30"
+    },
+    {
+      "full_name": "سما ممدوح ",
+      "phone_number": "01222222222",
+      "password": "123",
+      "role": "patient",
+      "date_of_birth": "2026-08-17",
+      "profile_image": "default.png",
+      "id": "9UIv7UkYWig"
+    },
+    {
+      "full_name": "Huda",
+      "phone_number": "0111111111111",
+      "password": "",
+      "role": "patient",
+      "date_of_birth": "2026-08-06",
+      "profile_image": "default.png",
+      "id": "DSRjqvN2Blo"
     }
   ],
   "patient_profiles": [
@@ -51,7 +69,7 @@
       "id": "1",
       "userId": "1",
       "gender": "ذكر",
-      "blood_type": "A+",
+      "blood_type": "O-",
       "marital_status": "أعزب",
       "address": "القاهرة، مدينة نصر، شارع الطيران",
       "allergies": [
@@ -59,7 +77,8 @@
         "الفول/المكسرات"
       ],
       "chronic_diseases": [
-        "الضغط مرتفع"
+        "الضغط مرتفع",
+        "الضغط المنخفض"
       ]
     },
     {
@@ -101,6 +120,16 @@
       "allergies": [],
       "chronic_diseases": [],
       "id": "8AZrwTwglqQ"
+    },
+    {
+      "userId": "9UIv7UkYWig",
+      "gender": "غير محدد",
+      "blood_type": "A+",
+      "marital_status": "غير محدد",
+      "address": "",
+      "allergies": [],
+      "chronic_diseases": [],
+      "id": "2--ik6zhJa0"
     }
   ],
   "doctor_profiles": [
@@ -150,7 +179,7 @@
       "doctorId": "1",
       "clinicLocationId": "102",
       "day_of_week": "Tuesday",
-      "start_time": "17:00",
+      "start_time": "00:00",
       "end_time": "22:00",
       "max_patients": 25,
       "is_active": true
@@ -201,7 +230,7 @@
       "scheduleId": "3",
       "booking_date": "2026-07-28",
       "queue_number": 3,
-      "status": "called",
+      "status": "completed",
       "consultation_fee": 300,
       "no_show_penalty": 100,
       "created_at": "2026-07-28T09:10:00Z"
@@ -214,7 +243,7 @@
       "scheduleId": "3",
       "booking_date": "2026-07-28",
       "queue_number": 4,
-      "status": "in_consultation",
+      "status": "completed",
       "consultation_fee": 300,
       "no_show_penalty": 100,
       "created_at": "2026-07-28T09:15:00Z"
@@ -227,7 +256,7 @@
       "scheduleId": "3",
       "booking_date": "2026-07-28",
       "queue_number": 5,
-      "status": "waiting",
+      "status": "completed",
       "consultation_fee": 300,
       "no_show_penalty": 100,
       "created_at": "2026-07-28T09:20:00Z"
@@ -240,7 +269,7 @@
       "scheduleId": "3",
       "booking_date": "2026-07-28",
       "queue_number": 6,
-      "status": "cancelled",
+      "status": "completed",
       "consultation_fee": 300,
       "no_show_penalty": 100,
       "created_at": "2026-07-28T09:25:00Z"
@@ -253,7 +282,7 @@
       "scheduleId": "3",
       "booking_date": "2026-07-28",
       "queue_number": 7,
-      "status": "waiting",
+      "status": "cancelled",
       "consultation_fee": 300,
       "no_show_penalty": 100,
       "created_at": "2026-07-28T09:30:00Z"
@@ -361,6 +390,175 @@
       "no_show_penalty": 100,
       "created_at": "2026-08-01T11:58:06.836Z",
       "id": "vCy73TDa0cA"
+    },
+    {
+      "patientId": "9UIv7UkYWig",
+      "doctorId": "1",
+      "scheduleId": "3",
+      "clinicLocationId": "103",
+      "booking_date": "2026-08-03",
+      "queue_number": 1,
+      "status": "cancelled",
+      "consultation_fee": 350,
+      "no_show_penalty": 100,
+      "created_at": "2026-08-03T04:35:35.516Z",
+      "id": "uQR2PtKfUFk"
+    },
+    {
+      "patientId": "9UIv7UkYWig",
+      "doctorId": "1",
+      "scheduleId": "3",
+      "clinicLocationId": "103",
+      "booking_date": "2026-08-03",
+      "queue_number": 2,
+      "status": "completed",
+      "consultation_fee": 350,
+      "no_show_penalty": 100,
+      "created_at": "2026-08-03T04:36:31.216Z",
+      "id": "BGBZ70ZQR_Q"
+    },
+    {
+      "patientId": "DSRjqvN2Blo",
+      "doctorId": "1",
+      "clinicLocationId": "103",
+      "scheduleId": "3",
+      "booking_date": "2026-08-03",
+      "queue_number": 1,
+      "status": "cancelled",
+      "consultation_fee": 350,
+      "no_show_penalty": 100,
+      "created_at": "2026-08-03T04:43:07.868Z",
+      "id": "LfmkWM24A5Q"
+    },
+    {
+      "patientId": "9UIv7UkYWig",
+      "doctorId": "1",
+      "scheduleId": "3",
+      "clinicLocationId": "103",
+      "booking_date": "2026-08-03",
+      "queue_number": 4,
+      "status": "cancelled",
+      "consultation_fee": 350,
+      "no_show_penalty": 100,
+      "created_at": "2026-08-03T06:27:31.258Z",
+      "id": "UqmRL7f1W20"
+    },
+    {
+      "patientId": "9UIv7UkYWig",
+      "doctorId": "1",
+      "scheduleId": "3",
+      "clinicLocationId": "103",
+      "booking_date": "2026-08-03",
+      "queue_number": 5,
+      "status": "completed",
+      "consultation_fee": 350,
+      "no_show_penalty": 100,
+      "created_at": "2026-08-03T06:43:29.023Z",
+      "id": "9ecfgBZRD6U"
+    },
+    {
+      "patientId": "9UIv7UkYWig",
+      "doctorId": "1",
+      "scheduleId": "3",
+      "clinicLocationId": "103",
+      "booking_date": "2026-08-03",
+      "queue_number": 6,
+      "status": "completed",
+      "consultation_fee": 350,
+      "no_show_penalty": 100,
+      "created_at": "2026-08-03T06:50:54.364Z",
+      "id": "a8-F293TFkY"
+    },
+    {
+      "patientId": "1",
+      "doctorId": "1",
+      "scheduleId": "3",
+      "clinicLocationId": "103",
+      "booking_date": "2026-08-03",
+      "queue_number": 7,
+      "status": "completed",
+      "consultation_fee": 350,
+      "no_show_penalty": 100,
+      "created_at": "2026-08-03T06:54:47.822Z",
+      "id": "HAWaBN1gsvU"
+    },
+    {
+      "patientId": "AAV0IUdyp3Q",
+      "doctorId": "1",
+      "scheduleId": "3",
+      "clinicLocationId": "103",
+      "booking_date": "2026-08-03",
+      "queue_number": 8,
+      "status": "cancelled",
+      "consultation_fee": 350,
+      "no_show_penalty": 100,
+      "created_at": "2026-08-03T06:55:01.025Z",
+      "id": "O7APfxJsFrY"
+    },
+    {
+      "patientId": "1",
+      "doctorId": "1",
+      "scheduleId": "3",
+      "clinicLocationId": "103",
+      "booking_date": "2026-08-03",
+      "queue_number": 9,
+      "status": "completed",
+      "consultation_fee": 350,
+      "no_show_penalty": 100,
+      "created_at": "2026-08-03T07:04:14.789Z",
+      "id": "dfsCkEkioeY"
+    },
+    {
+      "patientId": "1",
+      "doctorId": "1",
+      "scheduleId": "2",
+      "clinicLocationId": "102",
+      "booking_date": "2026-08-04",
+      "queue_number": 1,
+      "status": "cancelled",
+      "consultation_fee": 350,
+      "no_show_penalty": 100,
+      "created_at": "2026-08-04T01:06:42.431Z",
+      "id": "25f938cVg5M"
+    },
+    {
+      "patientId": "1",
+      "doctorId": "1",
+      "scheduleId": "2",
+      "clinicLocationId": "102",
+      "booking_date": "2026-08-04",
+      "queue_number": 2,
+      "status": "completed",
+      "consultation_fee": 350,
+      "no_show_penalty": 100,
+      "created_at": "2026-08-04T01:07:26.730Z",
+      "id": "zFpFWBUN7xc"
+    },
+    {
+      "patientId": "1",
+      "doctorId": "1",
+      "scheduleId": "2",
+      "clinicLocationId": "102",
+      "booking_date": "2026-08-04",
+      "queue_number": 3,
+      "status": "cancelled",
+      "consultation_fee": 350,
+      "no_show_penalty": 100,
+      "created_at": "2026-08-04T01:08:13.139Z",
+      "id": "SbEADVCrwdU"
+    },
+    {
+      "patientId": "1",
+      "doctorId": "1",
+      "scheduleId": "2",
+      "clinicLocationId": "102",
+      "booking_date": "2026-08-04",
+      "queue_number": 4,
+      "status": "completed",
+      "consultation_fee": 350,
+      "no_show_penalty": 100,
+      "created_at": "2026-08-04T01:38:29.803Z",
+      "id": "dIdIlyMS6eg"
     }
   ],
   "medical_records": [
@@ -453,6 +651,82 @@
       ],
       "created_at": "2026-07-27T16:43:08.858Z",
       "id": "JeQS_3JVNwM"
+    },
+    {
+      "appointmentId": "feSNlUvDc4Y",
+      "patientId": "1",
+      "doctorId": "1",
+      "visit_date": "2026-08-02",
+      "diagnosis": "ولا حاجه",
+      "doctor_notes": "ملاحظات كتيره",
+      "prescriptions": [
+        {
+          "medicine": "دوا",
+          "dosage": "مرتين",
+          "duration": "تلات اسابيع"
+        }
+      ],
+      "diet_plan": null,
+      "requested_lab_tests": [],
+      "created_at": "2026-08-02T16:41:48.533Z",
+      "id": "ABbUuKwQC9o"
+    },
+    {
+      "appointmentId": "BGBZ70ZQR_Q",
+      "patientId": "9UIv7UkYWig",
+      "doctorId": "1",
+      "visit_date": "2026-08-03",
+      "diagnosis": "مفيش تشخيص",
+      "doctor_notes": "ولا ملاحظات",
+      "prescriptions": [
+        {
+          "medicine": "ولا دوا",
+          "dosage": "ولا جرعه",
+          "duration": "ولا مده اسكت بقي"
+        }
+      ],
+      "diet_plan": null,
+      "requested_lab_tests": [],
+      "created_at": "2026-08-03T04:40:52.864Z",
+      "id": "5sXMB_5GwcM"
+    },
+    {
+      "appointmentId": "dfsCkEkioeY",
+      "patientId": "1",
+      "doctorId": "1",
+      "visit_date": "2026-08-03",
+      "diagnosis": "ده تشخيص جديد",
+      "doctor_notes": "ملاحظات جديده",
+      "prescriptions": [
+        {
+          "medicine": "medical report",
+          "dosage": "2 days",
+          "duration": "hsf"
+        }
+      ],
+      "diet_plan": null,
+      "requested_lab_tests": [],
+      "created_at": "2026-08-03T07:05:02.774Z",
+      "id": "SjDgk7ZGEZ4"
+    },
+    {
+      "appointmentId": "dIdIlyMS6eg",
+      "patientId": "1",
+      "doctorId": "1",
+      "visit_date": "2026-08-04",
+      "diagnosis": "اهلا",
+      "doctor_notes": "عاملين ايه",
+      "prescriptions": [
+        {
+          "medicine": "دايما",
+          "dosage": "ان شاء الله خير",
+          "duration": "حصل"
+        }
+      ],
+      "diet_plan": null,
+      "requested_lab_tests": [],
+      "created_at": "2026-08-04T01:38:57.319Z",
+      "id": "27DhCPVCXaE"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

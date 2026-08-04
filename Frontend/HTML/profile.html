@@ -1,140 +1,346 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>الملف الشخصي</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Cairo -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="../CSS/profile.css">
 </head>
 
 <body>
     <!-- <header class="header">
         <a href="./home.html" class="back-link"><i class="fa-solid fa-chevron-right"></i></a>
-        <h1 class=" font-bold text-2xl">الملف الشخصي</h1>
+        <h1 class="font-bold text-2xl">الملف الشخصي</h1>
     </header> -->
-    <main class="md:w-[80%] lg:w-[50%] w-[95%]">
-        <div class="box">
-            <div class="edit-request ">
-                <div class="edit-img">
-                    <div class="userImg">
-                        <img id="profileImg" src="" alt="userImg">
-                        <div id="editImg">
+    <main class="">
+        <div class="main-container">
+            <!-- Hero Header / Profile Summary Card -->
+            <div class="card profile-hero-card">
+                <div class="user-avatar-wrapper">
+                    <div class="userImg" id="editImgTrigger">
+                        <img id="profileImg" src="" alt="صورة المستخدم">
+                        <div class="edit-img-overlay" id="editImg">
                             <i class="fa-solid fa-camera"></i>
+                            <span>تغيير</span>
                         </div>
                     </div>
                 </div>
-                <div class="edit">
-                    <button class="cursor-pointer" type="button" id="editInfo">تعديل البيانات الشخصية</button>
-                    <button class="cursor-pointer" type="button" id="editPass">تغيير كلمة المرور</button>
+
+                <div class="user-meta">
+                    <h2 class="user-name-title" id="mainName">مروان خالد</h2>
+                    <p class="user-role">مستخدم نشط</p>
+                </div>
+
+                <div class="action-buttons-group">
+                    <button type="button" class="btn btn-outline" id="editInfo">
+                        <i class="fa-solid fa-user-pen"></i>
+                        <span>تعديل البيانات</span>
+                    </button>
+                    <button id="editMedicalBtn" class="btn btn-outline">
+                        تعديل البيانات الطبية
+                    </button>
+                    <button type="button" class="btn btn-subtle" id="editPass">
+                        <i class="fa-solid fa-lock"></i>
+                        <span>كلمة المرور</span>
+                    </button>
                 </div>
             </div>
-            <div class="profile-details">
-                <div class="data">
-                    <h3>الاسم الكامل</h3>
-                    <p id="fullname">مروان خالد</p>
+
+            <!-- Personal Info Card -->
+            <div class="card profile-info-card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-address-card"></i> البيانات الشخصية</h3>
                 </div>
-                <div class="data">
-                    <h3>رقم الهاتف</h3>
-                    <p id="number">01098706761</p>
-                </div>
-                <div class="data">
-                    <h3>تاريخ الميلاد</h3>
-                    <p id="date">11-11-2005</p>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">الاسم الكامل</span>
+                        <p class="info-value" id="fullname">مروان خالد</p>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">رقم الهاتف</span>
+                        <p class="info-value" dir="ltr" id="number">01098706761</p>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">تاريخ الميلاد</span>
+                        <p class="info-value" id="date">11-11-2005</p>
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="card profile-info-card">
+                <div class="card-header">
+                    <h3><i class="fa-solid fa-address-card"></i> المعلومات الطبية والشخصية</h3>
+                </div>
 
+                <div class="info-grid">
 
-        <div class="modal-container " id="modalForm">
-            <div class="back-lay">
-                <div class="modal box">
-                    <header>
+                    <div class="info-item">
+                        <span class="info-label">الجنس</span>
+                        <p class="info-value" id="gender">انثي</p>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="info-label">فصيلة الدم</span>
+                        <p class="info-value" id="bloodType">A+</p>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="info-label">الحالة الاجتماعية</span>
+                        <p class="info-value" id="maritalStatus">مطلقة</p>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="info-label">العنوان</span>
+                        <p class="info-value" id="address">عرب الرمل</p>
+                    </div>
+
+                    <div class="info-item expandable">
+
+                        <div class="info-header" id="allergiesHeader">
+                            <span class="info-label">الحساسية</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+
+                        <div class="info-content" id="allergiesContent">
+                            <p>البنسلين</p>
+                            <p>الفول</p>
+                            <p>المكسرات</p>
+                            <p>الغبار</p>
+                            <p>البنسلين</p>
+                            <p>الفول</p>
+                            <p>المكسرات</p>
+                            <p>الغبار</p>
+                        </div>
+
+                    </div>
+
+                    <div class="info-item expandable">
+
+                        <div class="info-header" id="diseasesHeader">
+                            <span class="info-label">الأمراض المزمنة</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+
+                        <div class="info-content" id="diseasesContent">
+                            <p>• ارتفاع ضغط الدم</p>
+                            <p>• السكري</p>
+                            <p>• الربو</p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Modal Dialog -->
+            <div class="modal-backdrop" id="modalForm">
+                <div class="modal-card">
+                    <header class="modal-header">
                         <h3 id="modalTite">تعديل البيانات الشخصية</h3>
-                        <button type="button" id="cancelBtn"><i class="fa-solid fa-xmark"></i></button>
+                        <button type="button" class="btn-close" id="cancelBtn">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
                     </header>
-                    <form id="editInfoForm"  class="hidden">
-                        <div>
+
+                    <!-- Edit Info Form -->
+                    <form id="editInfoForm" class="modal-form hidden">
+                        <div class="form-group">
                             <label for="fullN">الاسم الكامل</label>
-                            <input type="text" name="fullname" id="fullN">
-                            <p></p>
+                            <input type="text" name="fullname" id="fullN" placeholder="أدخل اسمك الكامل">
+                            <p class="error-msg"></p>
                         </div>
-                        <div>
+                        <div class="form-group">
                             <label for="phoneN">رقم الهاتف</label>
-                            <input type="tel" name="phoneN" id="phoneN">
-                            <p class="" id="phoneError"></p>
+                            <input type="tel" name="phoneN" id="phoneN" placeholder="01XXXXXXXXX" dir="ltr">
+                            <p class="error-msg" id="phoneError"></p>
                         </div>
-                        <div>
+                        <div class="form-group">
                             <label for="dateB">تاريخ الميلاد</label>
                             <input type="date" name="dateB" id="dateB">
-                            <p></p>
+                            <p class="error-msg"></p>
                         </div>
-                        <button type="button" id="editInfoBtn">حفظ التعديلات</button>
+                        <button type="button" class="btn btn-primary btn-block" id="editInfoBtn">حفظ التعديلات</button>
                     </form>
-                    <form id="changPassForm" class="hidden">
-                        <div>
+
+                    <!-- Change Password Form -->
+                    <form id="changPassForm" class="modal-form hidden">
+                        <div class="form-group">
                             <label for="currentPss">كلمة المرور الحالية</label>
                             <div class="password-wrapper">
-                                <input type="password" name="currentPss" id="currentPss">
+                                <input type="password" name="currentPss" id="currentPss" placeholder="">
                                 <i class="fa-solid fa-eye-slash toggle-password"></i>
                                 <i class="fa-solid fa-eye toggle-password d-none"></i>
                             </div>
-                            <p id="currentPssError"></p>
+                            <p class="error-msg" id="currentPssError"></p>
                         </div>
 
-                        <div>
-                            <label for="newPass">كلمة المرور الجديده</label>
+                        <div class="form-group">
+                            <label for="newPass">كلمة المرور الجديدة</label>
                             <div class="password-wrapper">
-                                <input type="password" name="newPass" id="newPass">
+                                <input type="password" name="newPass" id="newPass" placeholder="">
                                 <i class="fa-solid fa-eye-slash toggle-password"></i>
                                 <i class="fa-solid fa-eye toggle-password d-none"></i>
-                                <p id="newPassError"></p>
                             </div>
+                            <p class="error-msg" id="newPassError"></p>
                         </div>
 
-                        <div>
+                        <div class="form-group">
                             <label for="confirmPass">تأكيد كلمة المرور</label>
                             <div class="password-wrapper">
-                                <input type="password" name="confirmPass" id="confirmPass">
+                                <input type="password" name="confirmPass" id="confirmPass" placeholder="">
                                 <i class="fa-solid fa-eye-slash toggle-password"></i>
                                 <i class="fa-solid fa-eye toggle-password d-none"></i>
                             </div>
-                            <p id="confirmPassError"></p>
+                            <p class="error-msg" id="confirmPassError"></p>
                         </div>
-                        <button class="" id="changePassBtn" type="button">حفظ التعديلات</button>
-                    </form>
-                    <form id="editUserImgForm">
-                        <input id="fileInput" type="file" accept="image/*" hidden>
-                        <div id="containerFileInput">
-                            <div>
-                                <i class="fa-solid fa-image"></i>
-                                <p>اضغط لاضافة صورة</p>
-                            </div>
-                            <img id="preview" src="" style="display: none;" alt="">
-                        </div>
-                        <p id="uploadImgError"></p>
-                        <button id="deleteImage">حذف الصوره</button>
-                        <button id="upload">حفظ التعديلات</button>
+                        <button type="button" disabled class="btn btn-primary btn-block" id="changePassBtn">حفظ كلمة
+                            المرور</button>
                     </form>
 
+                    <!-- Edit Image Form -->
+                    <form id="editUserImgForm" class="modal-form hidden">
+                        <input id="fileInput" type="file" accept="image/*" hidden>
+                        <div id="containerFileInput" class="file-dropzone">
+                            <div class="dropzone-prompt">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                <p>اضغط لتحميل الصروه</p>
+                                <!-- <span>PNG, JPG أو WEBP (الحد الأقصى 5MB)</span> -->
+                            </div>
+                            <img id="preview" src="" alt="المعاينة" class="img-preview hidden">
+                        </div>
+                        <p class="error-msg" id="uploadImgError"></p>
+                        <div class="form-actions-dual">
+                            <button type="button" class="btn btn-primary" id="upload">حفظ الصورة</button>
+                            <button type="button" class="btn btn-danger" id="deleteImage">حذف الصورة</button>
+                        </div>
+                    </form>
+
+                    <form id="editMedicalForm" class="modal-form hidden">
+
+                        <div class="form-group">
+                            <label for="genderInput">الجنس</label>
+                            <select id="genderInput">
+                                <option value="ذكر">ذكر</option>
+                                <option value="أنثى">أنثى</option>
+                                <option value="غير محدد">غير محدد</option>
+                            </select>
+                            <p class="error-msg"></p>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="bloodInput">فصيلة الدم</label>
+                            <select id="bloodInput">
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                            <p class="error-msg"></p>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="maritalInput">الحالة الاجتماعية</label>
+                            <select id="maritalInput">
+                                <option value="أعزب">أعزب</option>
+                                <option value="متزوج">متزوج</option>
+                                <option value="مطلق">مطلق</option>
+                                <option value="أرمل">أرمل</option>
+                                <option value="غير محدد">غير محدد</option>
+                            </select>
+                            <p class="error-msg"></p>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="addressInput">العنوان</label>
+                            <input type="text" id="addressInput" placeholder="أدخل العنوان">
+                            <p class="error-msg"></p>
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="allergiesInput">الحساسية</label>
+
+                            <div class="add-input-group">
+                                <input type="text" id="allergiesInput" placeholder="مثال: البنسلين, المكسرات">
+
+                                <button type="button" id="addAllergyBtn">
+                                    إضافة
+                                </button>
+                            </div>
+
+                            <p class="error-msg"></p>
+
+                            <div class="info-content" id="allergiesFormOutput">
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label for="diseasesInput">الأمراض المزمنة</label>
+
+                            <div class="add-input-group">
+                                <input type="text" id="diseasesInput" placeholder="مثال: الضغط, السكر">
+
+                                <button type="button" id="addDiseaseBtn">
+                                    إضافة
+                                </button>
+                            </div>
+
+                            <p class="error-msg"></p>
+
+                            <div class="info-content" id="diseasesFormOutput">
+                                <p>hi</p>
+                            </div>
+
+                        </div>
+
+
+                        <button type="button" disabled class="btn btn-primary btn-block"  id="saveMedicalBtn">
+                            حفظ التعديلات
+                        </button>
+
+                    </form>
                 </div>
             </div>
-        </div>
-        <div class="success-popup" id="successPopup">
-            <div class="popup-content">
-                <i class="fa-regular fa-circle-check"></i>
-                <h3>تم التحديث بنجاح</h3>
-                <div class="range"></div>
+
+            <!-- Toast / Success Notification -->
+            <div class="success-popup" id="successPopup">
+                <div class="popup-content">
+                    <div class="toast-icon">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <div class="toast-text">
+                        <h4>تم بنجاح</h4>
+                        <p>تم تحديث البيانات الخاصة بك بنجاح.</p>
+                    </div>
+                    <div class="range"></div>
+                </div>
             </div>
         </div>
     </main>
 
     <script type="module" src="../js/initialSetup.js"></script>
     <script type="module" src="../JS/checkAuth.js"></script>
+    <script type="module" src="../JS/conponents/header.js"></script>
+    <script type="module" src="../JS//Pages/handelPatientProfileForm.js"></script>
+    <script type="module" src="../JS/Pages/getUserInfor.js"></script>
     <script type="module" src="../JS/Pages/updateUserData.js"></script>
     <script type="module" src="../JS/Pages/changePass.js"></script>
-    <script type="module" src="../JS/Pages/getUserInfor.js"></script>
-    <script type="module" src="../JS/conponents/header.js"></script>
 </body>
 
 </html>

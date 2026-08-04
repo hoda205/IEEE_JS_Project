@@ -4,17 +4,28 @@ const patient = checkAuth();
 
 if (patient) {
   loadQueue();
+
+  setInterval(() => {
+    loadQueue();
+  }, 3000);
+
 } else {
   window.location.replace("login.html");
 }
 
 // تحميل بيانات الطابور
-async function loadQueue() {
+async function loadQueue() { 
   const queue = await getQueueTracking(patient.id);
 
-  if (!queue) return;
+if (!queue) return;
 
-  console.log(queue);
+
+if (queue.status === "cancelled" || queue.status === "completed") {
+  window.location.replace("home.html");
+  return;
+}
+
+console.log(queue);
 
   document.getElementById("myQueueNumber").textContent = queue.myQueueNumber;
 

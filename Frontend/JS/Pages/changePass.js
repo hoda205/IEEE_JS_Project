@@ -1,7 +1,7 @@
 console.log(document.querySelector("#currentPssError"))
 import { checkAuth } from "../checkAuth.js";
 import { hiddenModal } from "./getUserInfor.js";
-import { updateUser } from "./updateUserData.js";
+import { updateUser , showSuccessPopup} from "./updateUserData.js";
 
 const user = checkAuth();
 
@@ -47,7 +47,12 @@ changePassBtn.addEventListener("click", async (e) => {
   user.password = newPass.value;
   localStorage.setItem("currentUser", JSON.stringify(user));
   document.getElementById("changPassForm").style.display = "none";
+  showSuccessPopup();
+  let id = await setTimeout(() => {
+    document.getElementById("successPopup").style.display = "none";
+  }, 20000);
   hiddenModal();
+
 });
 
 // منطق تشغيل أزرار العين لتبديل الرؤية لجميع الحقول

@@ -13,40 +13,34 @@ const patientId = params.get("id");
 async function getPatientDetails() {
   try {
     const userRes = await fetch(`${API_URL}/users/${patientId}`);
-
     const userData = await userRes.json();
 
-    const profileRes = await fetch(
-      `${API_URL}/patient_profiles?userId=${patientId}`,
+    const profileRes = await fetch(`${API_URL}/patient_profiles`);
+    const profiles = await profileRes.json();
+
+    const profileData = profiles.find(
+      (profile) => String(profile.userId) === String(patientId)
     );
-
-    const profileDataArray = await profileRes.json();
-
-    const profileData = profileDataArray[0];
 
     const user = {
       img: userData.profile_image,
-
       name: userData.full_name,
-
       gender: profileData?.gender,
-
       mobile: userData.phone_number,
-
       dob: userData.date_of_birth,
-
       blodType: profileData?.blood_type,
-
       maritalStatus: profileData?.marital_status,
-
       address: profileData?.address,
-
       allergies: profileData?.allergies,
-
       chronicDiseases: profileData?.chronic_diseases,
     };
 
+    // امسح القديم
+    main.innerHTML = "";
+
+    // اعمل Render من جديد
     renderPatient(user);
+
   } catch (error) {
     console.log(error);
   }
@@ -247,6 +241,11 @@ cancelBtn.addEventListener("click", async () => {
   await updateAppointmentStatus("cancelled");
 });
 
-getPatientDetails();
 
+getPatientDetails();
 getPatientAppointment();
+
+setInterval(async () => {
+  await getPatientDetails();
+  await getPatientAppointment();
+}, 3000);
